@@ -17,9 +17,9 @@ class User < ApplicationRecord
   end
 
   def start_time_cannot_be_greater_or_equal_end_time
-    if availibility_start_time > availibility_end_time || availibility_start_time == availibility_end_time
-      errors.add(:availibility_start_time, "Must be earlier than availibility end time")
-      errors.add(:availibility_end_time, "Must be later than availibility start time")
-    end
+    return if availibility_start_time < availibility_end_time
+
+    errors.add(:availibility_start_time, "Must be earlier than availibility end time")
+    errors.add(:availibility_end_time, "Must be later than availibility start time")
   end
 end
