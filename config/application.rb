@@ -13,6 +13,11 @@ module Peruname
       generate.helper false
       generate.test_framework :test_unit, fixture: false
     end
+
+    # To correctly serialize Tod::TimeOfDay values with Rails 5.1 time zone
+    # handling must be disabled for database time types
+    config.active_record.time_zone_aware_types = [:datetime]
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
 
