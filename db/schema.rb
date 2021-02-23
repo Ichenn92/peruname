@@ -10,10 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_20_180613) do
+ActiveRecord::Schema.define(version: 2021_02_23_150604) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+# Could not dump table "characters" because of following StandardError
+#   Unknown type 'character_category' for column 'category'
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,6 +26,12 @@ ActiveRecord::Schema.define(version: 2021_02_20_180613) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "actor", default: false, null: false
+    t.string "nickname"
+    t.string "first_name"
+    t.string "last_name"
+    t.time "availibility_start_time"
+    t.time "availibility_end_time"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
