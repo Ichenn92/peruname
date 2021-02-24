@@ -9,34 +9,34 @@ class UserTest < ActiveSupport::TestCase
                                 password: "12341234")
 
   test "User.actor? default is false" do
-    u = User.new
-    assert_not u.actor?, u.errors.full_messages.inspect
+    test_user = User.new
+    assert_not test_user.actor?, test_user.errors.full_messages.inspect
   end
 
   test "presence of actor, nickname, first_name, last_name, email, password" do
-    u = @@base_valid_actor
-    u.actor = false
-    assert u.valid?, u.errors.full_messages.inspect
+    test_user = @@base_valid_actor
+    test_user.actor = false
+    assert test_user.valid?, test_user.errors.full_messages.inspect
   end
 
   test "validates start availibility time is earlier than end availibility time" do
-    u = @@base_valid_actor
-    u.availibility_start_time = Tod::TimeOfDay.new 8, 15
-    u.availibility_end_time = Tod::TimeOfDay.new 16, 45
-    assert u.valid?, u.errors.full_messages.inspect
+    test_user = @@base_valid_actor
+    test_user.availibility_start_time = Tod::TimeOfDay.new 8, 15
+    test_user.availibility_end_time = Tod::TimeOfDay.new 16, 45
+    assert test_user.valid?, test_user.errors.full_messages.inspect
   end
 
   test "reject when start availibility time is later to end availibility time" do
-    u = @@base_valid_actor
-    u.availibility_start_time = Tod::TimeOfDay.new 18, 15
-    u.availibility_end_time = Tod::TimeOfDay.new 16, 45
-    assert_not u.valid?, u.errors.full_messages.inspect
+    test_user = @@base_valid_actor
+    test_user.availibility_start_time = Tod::TimeOfDay.new 18, 15
+    test_user.availibility_end_time = Tod::TimeOfDay.new 16, 45
+    assert_not test_user.valid?, test_user.errors.full_messages.inspect
   end
 
   test "reject when start availibility time is equal to end availibility time" do
-    u = @@base_valid_actor
-    u.availibility_start_time = Tod::TimeOfDay.new 16, 45
-    u.availibility_end_time = Tod::TimeOfDay.new 16, 45
-    assert_not u.valid?, u.errors.full_messages.inspect
+    test_user = @@base_valid_actor
+    test_user.availibility_start_time = Tod::TimeOfDay.new 16, 45
+    test_user.availibility_end_time = Tod::TimeOfDay.new 16, 45
+    assert_not test_user.valid?, test_user.errors.full_messages.inspect
   end
 end
