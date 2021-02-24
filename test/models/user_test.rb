@@ -30,7 +30,7 @@ class UserTest < ActiveSupport::TestCase
     test_user1 = @@base_valid_actor
     test_user1.availibility_start_time = Tod::TimeOfDay.new 18, 15
     test_user1.availibility_end_time = Tod::TimeOfDay.new 16, 45
-    assert_not test_user.valid?, test_user1.errors.full_messages.inspect
+    assert_not test_user1.valid?, test_user1.errors.full_messages.inspect
   end
 
   test "reject when start availibility time is equal to end availibility time" do
