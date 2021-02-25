@@ -1,4 +1,7 @@
 class Character < ApplicationRecord
+  has_many :performances
+  validates_associated :performances
+
   enum category: { celebrity: "celebrity",
                    superhero: "superhero",
                    anime: "anime",
