@@ -11,3 +11,28 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+// Importing fonts from google Font
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+$heading-font: 'Bebas Neue', cursive; //doesn't have font weights
+$body-font: 'Quicksand', sans-serif;
+
+//Font size definitions
+$small-font-size: 16px;
+$medium-font-size: 24px;
+$big-font-size: 32px;
+
+//Font weight definitions
+$thin-font-weight: 300;
+$regular-font-weight: 400;
+$bold-font-weight: 600;
+
+//Colors' definition
+$theme-colors: (
+  "primary": #7FD1E4,
+  "danger": #F46254,
+  "warning": #FFBD59,
+  "success": #8CD6A7
+);

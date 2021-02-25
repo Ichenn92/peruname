@@ -1,4 +1,5 @@
 class Character < ApplicationRecord
+  belongs_to :character_category
   enum category: { celebrity: "celebrity",
                    superhero: "superhero",
                    anime: "anime",
