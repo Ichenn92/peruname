@@ -1,7 +1,9 @@
 require "test_helper"
 
 class PerformanceTest < ActiveSupport::TestCase
-  @@base_valid_character = Character.new(name: "Pikachu", category: "Anime")
+  @@base_valid_character_category = CharacterCategory.new(name: "Anime")
+
+  @@base_valid_character = Character.new(name: "Pikachu", character_category: @@base_valid_character_category)
   
   @@base_valid_actor = User.new(nickname: "Leo",
                                 first_name: "Leonardo",
