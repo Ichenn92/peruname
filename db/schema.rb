@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_25_195222) do
+ActiveRecord::Schema.define(version: 2021_02_25_200613) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,9 +20,6 @@ ActiveRecord::Schema.define(version: 2021_02_25_195222) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
-
-# Could not dump table "characters" because of following StandardError
-#   Unknown type 'character_category' for column 'category'
 
   create_table "locations", force: :cascade do |t|
     t.string "address"
