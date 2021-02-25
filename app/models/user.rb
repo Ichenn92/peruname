@@ -6,7 +6,8 @@ class User < ApplicationRecord
   serialize :availibility_start_time, Tod::TimeOfDay
   serialize :availibility_end_time, Tod::TimeOfDay
 
-  attr_accessor :first_name, :last_name
+  has_many :performances
+  validates_associated :performances
 
   validates_presence_of :nickname, :first_name, :last_name
   validates_inclusion_of :actor, in: [true, false]
