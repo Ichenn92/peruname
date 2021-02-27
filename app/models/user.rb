@@ -3,8 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  serialize :availibility_start_time, Tod::TimeOfDay
-  serialize :availibility_end_time, Tod::TimeOfDay
+  serialize :availability_start_time, Tod::TimeOfDay
+  serialize :availability_end_time, Tod::TimeOfDay
 
   has_many :performances
   validates_associated :performances
@@ -15,14 +15,14 @@ class User < ApplicationRecord
   validate :start_time_cannot_be_greater_or_equal_end_time, if: :actor?
 
   with_options if: :actor? do
-    validates :availibility_start_time, presence: true
-    validates :availibility_end_time, presence: true
+    validates :availability_start_time, presence: true
+    validates :availability_end_time, presence: true
   end
 
   def start_time_cannot_be_greater_or_equal_end_time
-    if availibility_start_time > availibility_end_time || availibility_start_time == availibility_end_time
-      errors.add(:availibility_start_time, "Must be earlier than availibility end time")
-      errors.add(:availibility_end_time, "Must be later than availibility start time")
+    if availability_start_time > availability_end_time || availability_start_time == availability_end_time
+      errors.add(:availability_start_time, "Must be earlier than availability end time")
+      errors.add(:availability_end_time, "Must be later than availability start time")
     end
   end
 end

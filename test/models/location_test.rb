@@ -4,22 +4,11 @@ class LocationTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
-  @@base_valid_location = Location.new(city: "Lausanne", address: "Boulevard de Grancy 42")
+  @@base_valid_location = Location.new(name: "Starbucks", address: "Place de la Gare 2, 1001 Lausanne")
                                 
-  test "reject absence of city" do
+  test "rejects absence of name" do
     test_location = @@base_valid_location
-    test_location.city = ""
+    test_location.name = ""
     assert_not test_location.valid?, test_location.errors.full_messages.inspect
-  end
-
-  test "reject absence of address" do
-    test_location = @@base_valid_location
-    test_location.address = ""
-    assert_not test_location.valid?, test_location.errors.full_messages.inspect
-  end
-
-  test "accept presence of city and address" do
-    test_location = @@base_valid_location
-    assert test_location.valid?, test_location.errors.full_messages.inspect
   end
 end
