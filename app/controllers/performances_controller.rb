@@ -17,4 +17,10 @@ class PerformancesController < ApplicationController
       }
     end
   end
+
+  private
+
+  def params_search_performances
+    params.require(:performance).permit(:address, :radius, :begin_time, :end_time, :character_category)
+  end
 end
