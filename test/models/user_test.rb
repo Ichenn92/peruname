@@ -19,24 +19,24 @@ class UserTest < ActiveSupport::TestCase
     assert u.valid?, u.errors.full_messages.inspect
   end
 
-  test "validates start availibility time is earlier than end availibility time" do
+  test "validates start availability time is earlier than end availability time" do
     u = @@base_valid_actor
-    u.availibility_start_time = Tod::TimeOfDay.new 8, 15
-    u.availibility_end_time = Tod::TimeOfDay.new 16, 45
+    u.availability_start_time = Tod::TimeOfDay.new 8, 15
+    u.availability_end_time = Tod::TimeOfDay.new 16, 45
     assert u.valid?, u.errors.full_messages.inspect
   end
 
-  test "reject when start availibility time is later to end availibility time" do
+  test "reject when start availability time is later to end availability time" do
     u = @@base_valid_actor
-    u.availibility_start_time = Tod::TimeOfDay.new 18, 15
-    u.availibility_end_time = Tod::TimeOfDay.new 16, 45
+    u.availability_start_time = Tod::TimeOfDay.new 18, 15
+    u.availability_end_time = Tod::TimeOfDay.new 16, 45
     assert_not u.valid?, u.errors.full_messages.inspect
   end
 
-  test "reject when start availibility time is equal to end availibility time" do
+  test "reject when start availability time is equal to end availability time" do
     u = @@base_valid_actor
-    u.availibility_start_time = Tod::TimeOfDay.new 16, 45
-    u.availibility_end_time = Tod::TimeOfDay.new 16, 45
+    u.availability_start_time = Tod::TimeOfDay.new 16, 45
+    u.availability_end_time = Tod::TimeOfDay.new 16, 45
     assert_not u.valid?, u.errors.full_messages.inspect
   end
 end
