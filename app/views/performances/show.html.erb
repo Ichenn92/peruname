@@ -1,17 +1,16 @@
 <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://unsplash.com/photos/D-_JZhn-8kI)"> <%= @performance.character.name %> </div>
   <div class="container">
     <div class="card-description">
-      <h1><%= @performance.description%></h1>
+      <h1><%= @performance.description %></h1>
       <h2><%= @performance.category.name %></h2>
       <p><%= @performance.price_per_hour %></p>
-      <p><%= @performance. %></p>
     </div>
 
     <div class="row">
       <div class="col-8">
         <div class="performance-show-card">
           <h1><%= @performance.character.name %> by <%= @performance.user.nickname %>  </h1>
-          <p class="performance-show-address"><%= @flat.address %></p>
+          <p class="performance-show-address"><%= @performance.location.address %></p>
         </div>
       </div>
 
@@ -35,10 +34,10 @@
           <h3>Details</h3>
           <div class="flex">
             <div class="flex">
-              <i class="material-icons mr-2">Category</i><span><%= @performance.category.name  %></span>
+              <i class="fas fa-theater-masks"></i><span><%= @performance.category.name %></span>
             </div>
             <div class="flex ml-3">
-              <i class="material-icons mr-2">euro_symbol</i> <%= @performance.price_per_hour %>
+              <i class="fas fa-euro-sign"></i> <%= @performance.price_per_hour %>
             </div>
           </div>
         </div>
@@ -47,10 +46,9 @@
             <h6 class="no-mb">Share</h6>
 
             <div class="flex">
-              <i class="fa fa-facebook-square fa-2x mr-2"></i>
-              <i class="fa fa-twitter-square fa-2x mr-2"></i>
-              <i class="fa fa-pinterest-square fa-2x mr-2"></i>
-              <i class="fa fa-envelope-square fa-2x"></i>
+              <i class="fab fa-facebook-f"></i>
+              <i class="fab fa-twitter-square"></i>
+              <i class="fas fa-envelope-square"></i>
             </div>
           </div>
         </div>
