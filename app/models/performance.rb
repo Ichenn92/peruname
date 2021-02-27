@@ -13,7 +13,4 @@ class Performance < ApplicationRecord
 
   # TODO: add validation of user where actor is true
   # TODO: add validation that price_per_hour is an integer > 10
-
-  geocoded_by :address
-  after_validation :geocode, if: :will_save_change_to_address?
 end

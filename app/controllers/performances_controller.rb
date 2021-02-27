@@ -7,14 +7,13 @@ class PerformancesController < ApplicationController
     #   radius: default 5km
     #   shift(begin_time, end_time)
     #   category
-    @performances = Performance.near(params[:location])
-    authorize @performances
+    authorize @locations = Location.all
 
     # the `geocoded` scope filters only flats with coordinates (latitude & longitude)
-    @markers = @performances.geocoded.map do |performance|
+    @markers = @locations.geocoded.map do |location|
       {
-        lat: performance.latitude,
-        lng: performance.longitude,
+        lat: location.latitude,
+        lng: location.longitude,
       }
     end
   end
