@@ -1,0 +1,60 @@
+<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://unsplash.com/photos/D-_JZhn-8kI)"> <%= @performance.character.name %> </div>
+  <div class="container">
+    <div class="card-description">
+      <h1><%= @performance.description%></h1>
+      <h2><%= @performance.category.name %></h2>
+      <p><%= @performance.price_per_hour %></p>
+      <p><%= @performance. %></p>
+    </div>
+
+    <div class="row">
+      <div class="col-8">
+        <div class="performance-show-card">
+          <h1><%= @performance.character.name %> by <%= @performance.user.nickname %>  </h1>
+          <p class="performance-show-address"><%= @flat.address %></p>
+        </div>
+      </div>
+
+      <div class="col-4">
+        <div class="performance-show-card">
+          <h5>Book this performance!</h5>
+
+          <form action="">
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon1">From:</span>
+              <input type="text" class="form-control" placeholder="12/10/2017" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mt-2">
+              <span class="input-group-addon" id="basic-addon1">To:</span>
+              <input type="text" class="form-control" placeholder="18/10/2017" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+            <input type="submit" value="Book" class="btn btn-success mt-2" style="width: 100%">
+          </form>
+        </div>
+        <div class="performance-show-card">
+          <h3>Details</h3>
+          <div class="flex">
+            <div class="flex">
+              <i class="material-icons mr-2">Category</i><span><%= @performance.category.name  %></span>
+            </div>
+            <div class="flex ml-3">
+              <i class="material-icons mr-2">euro_symbol</i> <%= @performance.price_per_hour %>
+            </div>
+          </div>
+        </div>
+        <div class="performance-show-card">
+          <div class="flex-align">
+            <h6 class="no-mb">Share</h6>
+
+            <div class="flex">
+              <i class="fa fa-facebook-square fa-2x mr-2"></i>
+              <i class="fa fa-twitter-square fa-2x mr-2"></i>
+              <i class="fa fa-pinterest-square fa-2x mr-2"></i>
+              <i class="fa fa-envelope-square fa-2x"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
