@@ -3,8 +3,14 @@ class Performance < ApplicationRecord
   belongs_to :character
   belongs_to :location
 
-  validates :user, presence: true #add validation of user where actor is true
+  validates :user, presence: true 
   validates :character, presence: true
   validates :location, presence: true
-  validates :price_per_hour, presence: true  #add validation that price_per_hour is an integer > 10
+  validates :price_per_hour, presence: true
+
+  # TODO: add validation of user where actor is true
+  # TODO: add validation that price_per_hour is an integer > 10
+
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
 end
