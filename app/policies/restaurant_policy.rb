@@ -1,2 +1,0 @@
-class RestaurantPolicy < ApplicationPolicy
-end
