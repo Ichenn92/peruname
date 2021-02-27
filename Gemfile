@@ -31,6 +31,7 @@ gem "bootsnap", ">= 1.4.4", require: false
 gem "devise"
 
 gem "tod" #Supplies TimeOfDay class that includes parsing, strftime, comparison, and arithmetic.
+gem "pundit" # Authorization manager
 
 gem "autoprefixer-rails"
 gem "font-awesome-sass"
