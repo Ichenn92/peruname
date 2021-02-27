@@ -32,6 +32,7 @@ gem "devise"
 
 gem "tod" #Supplies TimeOfDay class that includes parsing, strftime, comparison, and arithmetic.
 gem "pundit" # Authorization manager
+gem "geocoder"
 
 gem "autoprefixer-rails"
 gem "font-awesome-sass"
