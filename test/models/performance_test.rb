@@ -12,7 +12,7 @@ class PerformanceTest < ActiveSupport::TestCase
                                 actor: true,
                                 password: "inglorious_bastard")
 
-  @@base_valid_location = Location.new(city: "Pully", address: "Chemin des Bains 4")
+  @@base_valid_location = Location.new(name: "Starbucks", address: "Place de la Gare 2, 1001 Lausanne")
 
   @@base_valid_performance = Performance.new(description: "A superb performance involving Pikachu at Pully outside swimming pool",
                                             character: @@base_valid_character,
