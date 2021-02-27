@@ -2,7 +2,9 @@ class Performance < ApplicationRecord
   belongs_to :user
   belongs_to :character
   belongs_to :location
+
   has_one :character_category, through: :character
+  belongs_to :performance_category
 
   validates :user, presence: true
   validates :character, presence: true
