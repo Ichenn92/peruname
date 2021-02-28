@@ -4,4 +4,10 @@
      data-markers="<%= @markers.to_json %>"
      data-mapbox-api-key="<%= ENV["MAPBOX_API_KEY"] %>"></div>
 
-<% # render "card_performance" %>
+<div class="row">
+  <% @performances.each do |performance| %>
+    <div class="col-12 col-md-4">
+      <%= render partial: "card_performance", locals: { performance: performance } %>
+    </div>
+  <% end %>
+</div>
