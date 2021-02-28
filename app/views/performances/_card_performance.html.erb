@@ -2,9 +2,9 @@
   <div class="row m-0">
 
     <div class="col-xs-12 col-sm-5 p-0 images-presentation">
-      <img src= <%= "https://source.unsplash.com/400x300/?#{performance.character.character_category}" %> />
+      <img src= <%= "https://source.unsplash.com/400x300/?#{performance.character.name}" %> />
       <div class="ranking">
-        <h2 class="text-mode-gradient brand-color"><i class="fas fa-heart"></i> grand-master </h2>
+        <h2 class="text-mode-gradient brand-color text-small"><i class="fas fa-heart"></i> grand-master </h2>
       </div>
     </div>
 
@@ -13,16 +13,20 @@
         <div class="d-flex justify-content-between align-items-start pb-2">
           <div>
             <p>interpreted by: <%= performance.user.nickname %></p>
-            <h2 class="ranking text-xsmall">
+            <h2 class="text-medium">
               <%= performance.character.name %>
             </h2>
           </div>
           <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="avatar-bordered" />
         </div>
 
-        <div class="text-xsmall">
+        <br>
+
+        <div class="text-small text-thin">
           <%= performance.description %>
         </div>
+
+        <br>
 
         <div class="d-flex justify-content-between align-items-end pt-2">
           <p><i class="fas fa-star"></i></p>

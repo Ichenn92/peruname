@@ -12,10 +12,6 @@
 @import "components/index";
 @import "pages/index";
 
-// Importing fonts from google Font
-
-
-
 //Font size definitions
 $xsmall-font-size: 12px;
 $small-font-size: 16px;
@@ -26,14 +22,6 @@ $big-font-size: 32px;
 $thin-font-weight: 300;
 $regular-font-weight: 400;
 $bold-font-weight: 600;
-
-// h1, h2, h3 {
-//     font-family: $headers-font;
-// }
-
-// p, a, span {
-//     font-family: $body-font;
-// }
 
 .text-xsmall {
     font-size: $xsmall-font-size;
