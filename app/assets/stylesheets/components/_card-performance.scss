@@ -1,0 +1,57 @@
+.card-performance {
+    margin: 24px;
+    position: relative;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    transition: all .2s ease-in-out;
+    color: black;
+  
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+  
+  .card-performance > img {
+    filter: brightness(80%);
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+  }
+  
+  .card-performance h2 {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .card-performance p {
+    font-size: 12px;
+    opacity: .7;
+    margin: 0;
+  }
+  
+  
+  .card-performance .card-performance-infos {
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    position: relative;
+  }
+  
+  .card-performance-infos .card-performance-user {
+    position: absolute;
+    right: 16px;
+    top: -20px;
+    width: 40px;
+  }
+  
+  .card-performance .card-performance-number-of-guests {
+    text-align: center;
+    position: absolute;
+    left: 24px;
+    top: 24px;
+    color: white;
+    text-shadow: 0 0px 8px rgba(0,0,0,.6);
+  }
