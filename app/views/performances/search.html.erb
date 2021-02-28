@@ -1,4 +1,3 @@
-
 <div id="map"
      style="width: 100%; height: 600px;"
      data-markers="<%= @markers.to_json %>"
@@ -7,7 +6,7 @@
 <div class="row">
   <% @performances.each do |performance| %>
     <div class="col-12 col-md-4">
-      <%= render partial: "card_performance", locals: { performance: performance } %>
+        <%= render partial: "card_performance", locals: { performance: performance } %>
     </div>
   <% end %>
 </div>
