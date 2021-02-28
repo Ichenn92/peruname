@@ -1,11 +1,10 @@
 .cards-performance {
   padding: 0;
-  height: 100vh;
+  margin: 0;
   overflow-y: scroll;
 
   .card-performance {
-    opacity: .8;
-    margin: 0;
+    opacity: .9;
     position: relative;
     overflow: hidden;
     background: white;
@@ -33,11 +32,28 @@
     }
 
     .images-presentation {
+      position: relative;
+
       img {
         filter: brightness(80%);
+        opacity: .9;
         height: 100%;
         width: 100%;
         object-fit: cover;
+      }
+
+      .ranking {
+        padding: 2px 4px;
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background-color: white;
+        border-radius: 4px;
+        
+        h2 {
+          font-weight: normal;
+          line-height: .9;
+        }
       }
     }
 

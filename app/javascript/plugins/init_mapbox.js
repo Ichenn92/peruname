@@ -30,6 +30,10 @@ const initMapbox = () => {
 
     fitMapToMarkers(map, markers);
     addMarkers(map, markers);
+
+    map.on('load', function () {
+      map.resize();
+    });
   }
 };
 

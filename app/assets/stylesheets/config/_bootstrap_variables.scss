@@ -11,11 +11,11 @@ $font-size-base: 1rem;
 
 // Colors
 $body-color: $gray;
-$primary:    #7FD1E4;
-$success:    #8CD6A7;
+$primary:    $blue;
+$success:    $green;
 $info:       $yellow;
-$danger:     #F46254;
-$warning:    #FFBD59;
+$danger:     $red;
+$warning:    $orange;
 
 // Buttons & inputs' radius
 $border-radius:    2px;

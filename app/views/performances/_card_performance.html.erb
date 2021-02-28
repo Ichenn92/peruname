@@ -1,35 +1,43 @@
 <%= link_to performance_path(performance) do %>
-  <div class="row">
+  <div class="row m-0">
 
-    <div class="col-5 images-presentation">
+    <div class="col-xs-12 col-sm-5 p-0 images-presentation">
       <img src= <%= "https://source.unsplash.com/400x300/?#{performance.character.character_category}" %> />
-      <h2 class="card-performance-number-of-guests"><i class="fas fa-heart"></i> <%= performance[:number_of_guests] %></h2>
-    </div>
-
-    <div class="col-7">
-      <div>
-        <h2><%= performance.character.name %></h2>
-        <p><%= performance.user.nickname %></p>
+      <div class="ranking">
+        <h2 class="text-mode-gradient brand-color"><i class="fas fa-heart"></i> grand-master </h2>
       </div>
-      <h2 class="">CHF <%= performance.price_per_hour %></h2>
-      <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="avatar-bordered" />
+    </div>
+
+    <div class="col-xs-12 col-sm-7 p-0">
+      <div class="h-100 d-flex flex-column justify-content-between px-3 py-3">
+        <div class="d-flex justify-content-between align-items-start pb-2">
+          <div>
+            <p>interpreted by: <%= performance.user.nickname %></p>
+            <h2 class="ranking text-xsmall">
+              <%= performance.character.name %>
+            </h2>
+          </div>
+          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="avatar-bordered" />
+        </div>
+
+        <div class="text-xsmall">
+          <%= performance.description %>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-end pt-2">
+          <p><i class="fas fa-star"></i></p>
+          <div class="text-small">
+            <span class="text-bold">
+              CHF <%= performance.price_per_hour %>
+            </span>
+            <span class="text-regular">
+              /hour
+            </span>
+          </div>
+        </div>
+
+      </div>
     </div>
 
   </div>
 <% end %>
-<!--
-<%= link_to performance_path(performance) do %>
-  <div class="col-5 col-xs-12">
-    <img src= <%= "https://source.unsplash.com/400x300/?#{performance.character.character_category}" %> />
-    <h2 class="card-performance-number-of-guests"><i class="fas fa-heart"></i> <%= performance[:number_of_guests] %></h2>
-  </div>
-  <div class="card-performance-infos col-5 col-xs-12">
-    <div>
-      <h2><%= performance.character.name %></h2>
-      <p><%= performance.user.nickname %></p>
-    </div>
-    <h2 class="card-performance-pricing">CHF <%= performance.price_per_hour %></h2>
-    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-performance-user avatar-bordered" />
-  </div>
-<% end %>
--->
