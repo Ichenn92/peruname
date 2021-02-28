@@ -1,14 +1,35 @@
 <%= link_to performance_path(performance) do %>
-  <div class="card-performance">
-    <img src= <%= "https://source.unsplash.com/400x300/?#{performance.character.character_category}" %> />
-    <h2 class="card-performance-number-of-guests"><i class="fas fa-heart"></i> <%= performance[:number_of_guests] %></h2>
-    <div class="card-performance-infos">
+  <div class="row">
+
+    <div class="col-5 images-presentation">
+      <img src= <%= "https://source.unsplash.com/400x300/?#{performance.character.character_category}" %> />
+      <h2 class="card-performance-number-of-guests"><i class="fas fa-heart"></i> <%= performance[:number_of_guests] %></h2>
+    </div>
+
+    <div class="col-7">
       <div>
         <h2><%= performance.character.name %></h2>
         <p><%= performance.user.nickname %></p>
       </div>
-      <h2 class="card-performance-pricing">CHF <%= performance.price_per_hour %></h2>
-      <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-performance-user avatar-bordered" />
+      <h2 class="">CHF <%= performance.price_per_hour %></h2>
+      <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="avatar-bordered" />
     </div>
+
   </div>
 <% end %>
+<!--
+<%= link_to performance_path(performance) do %>
+  <div class="col-5 col-xs-12">
+    <img src= <%= "https://source.unsplash.com/400x300/?#{performance.character.character_category}" %> />
+    <h2 class="card-performance-number-of-guests"><i class="fas fa-heart"></i> <%= performance[:number_of_guests] %></h2>
+  </div>
+  <div class="card-performance-infos col-5 col-xs-12">
+    <div>
+      <h2><%= performance.character.name %></h2>
+      <p><%= performance.user.nickname %></p>
+    </div>
+    <h2 class="card-performance-pricing">CHF <%= performance.price_per_hour %></h2>
+    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-performance-user avatar-bordered" />
+  </div>
+<% end %>
+-->
