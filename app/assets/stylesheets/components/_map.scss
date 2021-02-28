@@ -1,3 +1,19 @@
 .map-container {
     width: 100%;
 }
+
+#button-switch-map {
+    border-radius: 5em;
+    width: 100px;
+    position: absolute;
+    left: 50%;
+    bottom: 30px;
+    margin-left: -50px; 
+}
+
+
+@media (min-width: 768px) {
+    #button-switch-map {
+        display: none;
+    }
+}
