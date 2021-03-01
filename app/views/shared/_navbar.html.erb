@@ -1,8 +1,9 @@
 <header>
-  <div class="navbar navbar-expand-sm navbar-dark navbar-lewagon fixed-top <%= yield(:navbar_class) %>">
-    <%= link_to "/", class: "navbar-brand" do %>
-      <%= image_tag "logo-transparent.png", class: "rounded" %>
-      <% end %>
+  <div class="navbar navbar-expand-sm navbar-light navbar-lewagon fixed-top <%= yield(:navbar_class) %>">
+    <%= link_to root_path, class: "navbar-brand" do %>
+      <% logo = content_for?(:logo) ? yield(:logo) : "Logo-green.png" %>
+      <%= image_tag logo, class: "rounded" %>
+    <% end %>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -34,4 +35,7 @@
       </ul>
     </div>
   </div>
+
+    <div class="next <%= yield(:no_display_class) %>"></div>
+
 </header>

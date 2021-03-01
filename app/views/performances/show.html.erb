@@ -1,52 +1,53 @@
-<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1598386650567-c283abedefc0?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80')">
-  <div class="title-show">
-  <h1><%= @performance.character.name %> by <%= @performance.user.nickname %> </h1>
-  <p><%= @performance.location.address %></p>
-  </div>
-</div>
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-md-8">
-        <div class="performance-show-card">
-          <h1><%= @performance.character.name %></h1>
-          <p>Category: <%= @performance.performance_category.name %></p>
-          <p><%=@performance.description %></p>
-          <h5>Availabilities</h5>
-          <p><%=@performance.user.availability_start_time %> to <%=@performance.user.availability_end_time %> </p>
-        </div>
-      </div>
-
-          <%= render 'bookings/form' %>
-
+<div class="performance-show-container">
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1598386650567-c283abedefc0?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80')">
+    <div class="title-show">
+    <h1><%= @performance.character.name %> by <%= @performance.user.nickname %> </h1>
+    <p><%= @performance.location.address %></p>
     </div>
-    <div class="row">
-<div class="col-xs-12 col-md-8">
-        <div class="performance-show-card">
-          <h3>Details</h3>
-          <div class="d-flex align-items-center justify-content-between">
-            <div>
-              <i class="fas fa-theater-masks"></i><span> <%= @performance.performance_category.name %></span>
+  </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-md-8">
+          <div class="performance-show-card">
+            <h1><%= @performance.character.name %></h1>
+            <p>Category: <%= @performance.performance_category.name %></p>
+            <p><%=@performance.description %></p>
+            <h5>Availabilities</h5>
+            <p><%=@performance.user.availability_start_time %> to <%=@performance.user.availability_end_time %> </p>
+          </div>
+        </div>
+
+            <%= render 'bookings/form' %>
+
+      </div>
+      <div class="row">
+  <div class="col-xs-12 col-md-8">
+          <div class="performance-show-card">
+            <h3>Details</h3>
+            <div class="d-flex align-items-center justify-content-between">
+              <div>
+                <i class="fas fa-theater-masks"></i><span> <%= @performance.performance_category.name %></span>
+              </div>
+              <div>
+                <i class="fas fa-euro-sign"></i> <%= @performance.price_per_hour %> CHF/hour
+              </div>
             </div>
-            <div>
-              <i class="fas fa-euro-sign"></i> <%= @performance.price_per_hour %> CHF/hour
+          </div>
+          <div class="performance-show-card">
+            <div class="flex-align">
+              <h6 class="no-mb">Share</h6>
+              <div class="d-flex">
+                <i class="fab fa-facebook-f fa-2x mr-2"></i>
+                <i class="fab fa-twitter-square fa-2x mr-2"></i>
+                <i class="fas fa-envelope-square fa-2x mr-2"></i>
+              </div>
             </div>
           </div>
         </div>
-        <div class="performance-show-card">
-          <div class="flex-align">
-            <h6 class="no-mb">Share</h6>
-            <div class="d-flex">
-              <i class="fab fa-facebook-f fa-2x mr-2"></i>
-              <i class="fab fa-twitter-square fa-2x mr-2"></i>
-              <i class="fas fa-envelope-square fa-2x mr-2"></i>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>
 </div>
-
 
 
 

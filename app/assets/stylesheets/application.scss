@@ -24,14 +24,6 @@ $thin-font-weight: 300;
 $regular-font-weight: 400;
 $bold-font-weight: 600;
 
-//Colors' definition
-$theme-colors: (
-  "primary": #7FD1E4,
-  "danger": #F46254,
-  "warning": #FFBD59,
-  "success": #8CD6A7
-);
-
 .text-xsmall {
     font-size: $xsmall-font-size;
 }
@@ -66,4 +58,13 @@ $theme-colors: (
 
 .full-height-without-navbar {
     height: calc(100vh - 80px);
+}
+
+a {
+
+  color: #1f4037;
+  &:hover {
+    text-decoration: none;
+    color: #5ba390;
+  }
 }

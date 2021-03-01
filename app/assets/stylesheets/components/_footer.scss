@@ -7,10 +7,9 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-}
-
-.btn-floating:hover {
+  &:hover {
   opacity: 0.5;
+}
 }
 
 .center-icon {
@@ -18,4 +17,7 @@
   justify-content: center;
 }
 
+.text-black {
+  color: black;
+}
 
