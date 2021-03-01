@@ -1,7 +1,20 @@
+<div class="row m-0">
 
-<div id="map"
-     style="width: 100%; height: 600px;"
-     data-markers="<%= @markers.to_json %>"
-     data-mapbox-api-key="<%= ENV["MAPBOX_API_KEY"] %>"></div>
+  <div class="col-xs-12 col-md-7 d-md-block p-0" id="performances-column">
+    <ul class="cards-performance full-height-without-navbar">
+      <% @performances.each do |performance| %>
+        <li class="card-performance">
+          <%= render partial: "card_performance", locals: { performance: performance } %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 
-<% # render "card_performance" %>
+  <div class="col-xs-12 col-md-5 d-none d-md-block map-container full-height-without-navbar"
+      id="map"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV["MAPBOX_API_KEY"] %>">
+  </div>
+
+  <button class="btn btn-secondary btn-lg" id="button-switch-map">Map</button>
+</div>
