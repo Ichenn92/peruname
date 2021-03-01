@@ -5,7 +5,15 @@
     }
 }
 
-.algolia-places {
-    width: auto;
-    min-width: 0;
+@media (min-width: 576px) {
+    .algolia-places {
+        width: auto;
+        min-width: 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .btn-search {
+        width: 100%;
+    }
 }
