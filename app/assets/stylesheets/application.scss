@@ -13,14 +13,8 @@
 @import "pages/index";
 @import "performances/index";
 
-// Importing fonts from google Font
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-
-$heading-font: 'Bebas Neue', cursive; //doesn't have font weights
-$body-font: 'Quicksand', sans-serif;
-
 //Font size definitions
+$xsmall-font-size: 12px;
 $small-font-size: 16px;
 $medium-font-size: 24px;
 $big-font-size: 32px;
@@ -37,3 +31,39 @@ $theme-colors: (
   "warning": #FFBD59,
   "success": #8CD6A7
 );
+
+.text-xsmall {
+    font-size: $xsmall-font-size;
+}
+.text-small {
+    font-size: $small-font-size;
+}
+.text-medium {
+    font-size: $medium-font-size;
+}
+.text-big {
+    font-size: $big-font-size;
+}
+
+.text-thin {
+    font-weight: $thin-font-weight;
+}
+.text-regular {
+    font-weight: $regular-font-weight;
+}
+.text-bold {
+    font-weight: $bold-font-weight;
+}
+
+.brand-color {
+    background: linear-gradient(0deg, #5ba390, #1f4037);
+}
+
+.text-mode-gradient {
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.full-height-without-navbar {
+    height: calc(100vh - 80px);
+}

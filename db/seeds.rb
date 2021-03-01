@@ -24,7 +24,7 @@ montriond = { name: "Le Montriond", address: "Avenue Édouard Dapples 25, 1006 L
 petit_theatre = { name: "Le Petit Théâtre", address: "Place de la Cathédrale 12, 1005 Lausanne" }
 terrasse_des_grandes_roches = { name: "Terrasse des Grandes Roches", address: "Escaliers des Grandes-Roches, 1003 Lausanne" }
 freddy_mercury_statue = { name: "Freddie Mercury Statue", address: "Place du Marché, 1820 Montreux" }
-[ zoom, slack, skype, caffe_spettacolo, cafe_de_la_plage, etoile, montriond, petit_theatre, terrasse_des_grandes_roches, freddy_mercury_statue ].each do |attribute|
+[zoom, slack, skype, caffe_spettacolo, cafe_de_la_plage, etoile, montriond, petit_theatre, terrasse_des_grandes_roches, freddy_mercury_statue].each do |attribute|
   location = Location.create!(attribute)
   puts "Setting a marker for #{location.name}"
 end
@@ -35,8 +35,8 @@ fake_friend = { name: "Fake friend" }
 profession = { name: "Profession" }
 celebrity = { name: "Celebrity" }
 superhero = { name: "Superhero" }
-others = { name: "Others"}
-[ anime, fake_friend, profession, celebrity, superhero, others ].each do |attribute|
+others = { name: "Others" }
+[anime, fake_friend, profession, celebrity, superhero, others].each do |attribute|
   character_category = CharacterCategory.create!(attribute)
   puts "Adding a new character category for #{character_category.name}"
 end
@@ -65,7 +65,7 @@ brandon = { name: "Brandon", character_category: CharacterCategory.find_by_name(
 julia = { name: "Julia", character_category: CharacterCategory.find_by_name("Fake friend") }
 michel = { name: "Michel", character_category: CharacterCategory.find_by_name("Fake friend") }
 blandine = { name: "Blandine", character_category: CharacterCategory.find_by_name("Fake friend") }
-[ pikachu, totoro, candy, jiren, soeur_emmanuelle, donald_trump, chuck_norris, elon_musk, beyonce, greta_thunberg, iron_man, wonder_woman, batman, teacher, car_repairman, taxidermist, web_developer, brandon, julia, michel, blandine ].each do |attribute|
+[pikachu, totoro, candy, jiren, soeur_emmanuelle, donald_trump, chuck_norris, elon_musk, beyonce, greta_thunberg, iron_man, wonder_woman, batman, teacher, car_repairman, taxidermist, web_developer, brandon, julia, michel, blandine].each do |attribute|
   character = Character.create!(attribute)
   puts "Spawning a new character called #{character.name}"
 end
@@ -77,7 +77,7 @@ depressive = { name: "Depressive" }
 realistic = { name: "Realistic" }
 parody = { name: "Parody" }
 miscellaneous = { name: "Miscellaneous" }
-[ romantic, funny, depressive, realistic, parody, miscellaneous ].each do |attribute|
+[romantic, funny, depressive, realistic, parody, miscellaneous].each do |attribute|
   performance_category = PerformanceCategory.create!(attribute)
   puts "Adding a new performance category for #{performance_category.name}"
 end
@@ -88,7 +88,7 @@ giselle = { nickname: "Gibella", first_name: "Giselle", last_name: "Schmidt", em
 eytan = { nickname: "Tannenbaum", first_name: "Eytan", last_name: "Bergstein", email: "eytan.bergstein@gmail.com", password: "123456", actor: false, availability_start_time: Tod::TimeOfDay.new(19, 30), availability_end_time: Tod::TimeOfDay.new(23, 00) }
 canelle = { nickname: "Canelloni", first_name: "Caroline", last_name: "Maupas", email: "caroline.maupas@gmail.com", password: "123456", actor: true, availability_start_time: Tod::TimeOfDay.new(19, 30), availability_end_time: Tod::TimeOfDay.new(22, 15) }
 gontrand = { nickname: "El Capo", first_name: "Gaston", last_name: "Capo", email: "gaston.capo@gmail.com", password: "123456", actor: true, availability_start_time: Tod::TimeOfDay.new(17, 45), availability_end_time: Tod::TimeOfDay.new(20, 30) }
-[ alain, giselle, eytan, canelle, gontrand ].each do |attribute|
+[alain, giselle, eytan, canelle, gontrand].each do |attribute|
   user = User.create!(attribute)
   puts "Signing up a new user nicknamed #{user.nickname}: #{user.first_name} #{user.last_name}"
 end
@@ -149,12 +149,21 @@ performance_9 = { description: "Lorem ipsum dolor sit amet, consectetur adipisci
                   performance_category: PerformanceCategory.find_by_name("Parody"),
                   location: Location.find_by_name("Terrasse des Grandes Roches") }
 performance_10 = { description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+<<<<<<< HEAD
                   price_per_hour: 30,
                   character: Character.find_by_name("Greta Thunberg"),
                   user: User.find_by_nickname("Gibella"),
                   performance_category: PerformanceCategory.find_by_name("Depressive"),
                   location: Location.find_by_name("Freddie Mercury Statue") }
 [ performance_1, performance_2, performance_3, performance_4, performance_5, performance_6, performance_7, performance_8, performance_9, performance_10 ].each do |attribute|
+=======
+                   price_per_hour: 30,
+                   character: Character.find_by_name("Greta Thunberg"),
+                   user: User.find_by_nickname("Gibella"),
+                   performance_category: PerformanceCategory.find_by_name("Depressive"),
+                   location: Location.find_by_name("Freddie Mercury Statue") }
+[performance_1, performance_2, performance_3, performance_4, performance_5, performance_6, performance_7, performance_8, performance_9, performance_10].each do |attribute|
+>>>>>>> master
   performance = Performance.create!(attribute)
   puts "Assisting to a new #{performance.performance_category.name.downcase} performance of #{performance.character.name} interpreted by #{performance.user.nickname} at #{performance.location.name} "
 end

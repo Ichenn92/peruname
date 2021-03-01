@@ -1,15 +1,11 @@
-class PerformancePolicy < ApplicationPolicy
+class LocationPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.all
     end
   end
 
-<<<<<<< HEAD
-  def show?
-=======
   def search?
->>>>>>> master
     true
   end
 end
