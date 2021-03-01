@@ -4,6 +4,7 @@ $navbar-height: 80px;
   height: $navbar-height;
   justify-content: space-between;
   background: white;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -17,11 +18,16 @@ $navbar-height: 80px;
 .navbar-home {
   background: transparent;
   box-shadow: none;
-  position: absolute;
   width: 100%;
   a.nav-link {
     color: white;
   }
+}
+
+.next {
+  height: $navbar-height;
+  width: 100%;
+  background-color: #055f79;
 }
 
 

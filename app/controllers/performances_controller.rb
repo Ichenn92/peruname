@@ -1,5 +1,10 @@
 class PerformancesController < ApplicationController
-  skip_before_action :authenticate_user!, only: :search
+  include Pundit
+  skip_before_action :authenticate_user!, only: [:search, :show]
+
+  def show
+    authorize @performance = Performance.find(params[:id])
+  end
 
   def search
     authorize @all_locations = Location.near(params[:address], 5) # default radius of 5km

@@ -11,6 +11,7 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+@import "performances/index";
 
 //Font size definitions
 $xsmall-font-size: 12px;
@@ -57,4 +58,13 @@ $bold-font-weight: 600;
 
 .full-height-without-navbar {
     height: calc(100vh - 80px);
+}
+
+a {
+
+  color: #1f4037;
+  &:hover {
+    text-decoration: none;
+    color: #5ba390;
+  }
 }
