@@ -2,11 +2,17 @@
 
   <%= form_tag performances_search_path, class: "form-inline", method: :get do %>
     <%= text_field_tag :performance_address,
-      params[:performance_address],
-      class: "form-control",
-      placeholder: "Choose a location"
+        params[:performance_address],
+        class: "form-control",
+        placeholder: "Choose a location"
     %>
-    <%= date_select :start_date, :startdate , :class => 'datepicker' %>
+    <%= text_field_tag :date, 
+        params[:date], 
+        as: :string, 
+        class: "datepicker form-control",
+        placeholder: "Pick a date"
+    %>
+    <%# date_select :start_date, :startdate , :class => 'datepicker' %>
     <%= submit_tag "Search", class: "btn btn-dark" %>
   <% end %>
   
