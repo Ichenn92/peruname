@@ -149,12 +149,12 @@ performance_9 = { description: "Lorem ipsum dolor sit amet, consectetur adipisci
                   performance_category: PerformanceCategory.find_by_name("Parody"),
                   location: Location.find_by_name("Terrasse des Grandes Roches") }
 performance_10 = { description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                   price_per_hour: 30,
-                   character: Character.find_by_name("Greta Thunberg"),
-                   user: User.find_by_nickname("Gibella"),
-                   performance_category: PerformanceCategory.find_by_name("Depressive"),
-                   location: Location.find_by_name("Freddie Mercury Statue") }
-[performance_1, performance_2, performance_3, performance_4, performance_5, performance_6, performance_7, performance_8, performance_9, performance_10].each do |attribute|
+                  price_per_hour: 30,
+                  character: Character.find_by_name("Greta Thunberg"),
+                  user: User.find_by_nickname("Gibella"),
+                  performance_category: PerformanceCategory.find_by_name("Depressive"),
+                  location: Location.find_by_name("Freddie Mercury Statue") }
+[ performance_1, performance_2, performance_3, performance_4, performance_5, performance_6, performance_7, performance_8, performance_9, performance_10 ].each do |attribute|
   performance = Performance.create!(attribute)
   puts "Assisting to a new #{performance.performance_category.name.downcase} performance of #{performance.character.name} interpreted by #{performance.user.nickname} at #{performance.location.name} "
 end

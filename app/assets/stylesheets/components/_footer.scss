@@ -1,0 +1,23 @@
+.btn-floating {
+  border-radius: 50%;
+  border: none;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  &:hover {
+  opacity: 0.5;
+  }
+}
+
+.center-icon {
+  display: flex;
+  justify-content: center;
+}
+
+.text-black {
+  color: black;
+}
+

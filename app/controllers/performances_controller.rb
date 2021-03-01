@@ -1,5 +1,10 @@
 class PerformancesController < ApplicationController
-  skip_before_action :authenticate_user!, only: :search
+  include Pundit
+  skip_before_action :authenticate_user!, only: [:search, :show]
+
+  def show
+    authorize @performance = Performance.find(params[:id])
+  end
 
   def search
     # Info to look at:
@@ -18,6 +23,4 @@ class PerformancesController < ApplicationController
       }
     end
   end
-
-  def show; end
 end

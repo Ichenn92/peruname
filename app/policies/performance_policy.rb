@@ -5,6 +5,10 @@ class PerformancePolicy < ApplicationPolicy
     end
   end
 
+  def show?
+    true
+  end
+
   def search?
     true
   end
