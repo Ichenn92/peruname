@@ -1,0 +1,60 @@
+//Font size definitions
+$xsmall-font-size: 12px;
+$small-font-size: 16px;
+$medium-font-size: 24px;
+$big-font-size: 32px;
+
+//Font weight definitions
+$thin-font-weight: 300;
+$regular-font-weight: 400;
+$bold-font-weight: 600;
+
+//brand-color
+$color-brand-dark: #1f4037;
+$color-brand-light: #5ba390;
+
+
+.text-xsmall {
+    font-size: $xsmall-font-size;
+}
+.text-small {
+    font-size: $small-font-size;
+}
+.text-medium {
+    font-size: $medium-font-size;
+}
+.text-big {
+    font-size: $big-font-size;
+}
+
+.text-thin {
+    font-weight: $thin-font-weight;
+}
+.text-regular {
+    font-weight: $regular-font-weight;
+}
+.text-bold {
+    font-weight: $bold-font-weight;
+}
+
+.brand-color {
+    background: linear-gradient(0deg, $color-brand-light, $color-brand-dark);
+}
+
+.text-mode-gradient {
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.full-height-without-navbar {
+    height: calc(100vh - 80px);
+}
+
+a {
+
+  color: #1f4037;
+  &:hover {
+    text-decoration: none;
+    color: #5ba390;
+  }
+}

@@ -1,4 +1,6 @@
 class Performance < ApplicationRecord
+  searchkick
+
   belongs_to :user
   belongs_to :character
   belongs_to :location

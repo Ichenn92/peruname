@@ -1,17 +1,22 @@
-    <div class="search-bar">
+<div class="search-bar">
 
-      <form action="/performances/search" class="form-inline padded">
-        <input name="location" type="text" class="form-control" placeholder="Where?">
-        <select name="category" id="" class="form-control border-radius input-lg">
-          <option selected>Categories</option>
-          <option value="1">Celebrity</option>
-          <option value="2">Superhero</option>
-          <option value="3">Anime</option>
-          <option value="4">Fake friend</option>
-          <option value="5">Others</option>
-        </select>
-        <input type="text" name="start_time" class="form-control" placeholder="Start Time">
-        <input type="text" name="end_time" class="form-control" placeholder="End Time">
-        <input type="submit" class="btn btn-dark" value="Search">
-      </form>
-    </div>
+  <%= form_tag performances_search_path, class: "form-inline", method: :get do %>
+    <%= text_field_tag :address,
+                       params[:address],
+                       class: "form-control",
+                       placeholder: "Choose a location" %>
+    <%= collection_select :performance, :character_category,
+                          CharacterCategory.all,
+                          :id, :name,
+                          { prompt: "Category", include_blank: "All" },
+                          { class: "form-control" } %>
+    <%= text_field_tag :date,
+                       params[:date],
+                       as: :string,
+                       class: "datepicker form-control",
+                       placeholder: "Pick a date" %>
+    <% # date_select :start_date, :startdate , :class => 'datepicker' %>
+    <%= submit_tag "Search", class: "btn btn-dark" %>
+  <% end %>
+  
+</div>
