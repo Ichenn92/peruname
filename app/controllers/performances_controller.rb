@@ -20,7 +20,9 @@ class PerformancesController < ApplicationController
     set_markers
   end
 
-  def show; end
+  def show
+    authorize @performance = Performance.find(params[:id])
+  end
 
   private
 

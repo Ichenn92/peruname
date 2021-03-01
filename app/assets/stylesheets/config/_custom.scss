@@ -49,12 +49,3 @@ $color-brand-light: #5ba390;
 .full-height-without-navbar {
     height: calc(100vh - 80px);
 }
-
-a {
-
-  color: #1f4037;
-  &:hover {
-    text-decoration: none;
-    color: #5ba390;
-  }
-}
