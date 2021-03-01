@@ -1,10 +1,9 @@
 class PerformancesController < ApplicationController
   include Pundit
-  after_action :verify_authorized, except: [:show]
-  skip_before_action :authenticate_user!, only: :search
+  skip_before_action :authenticate_user!, only: [:search, :show]
 
   def show
-    @performance = Performance.find(params[:id])
+    authorize @performance = Performance.find(params[:id])
   end
 
   def search
@@ -22,5 +21,6 @@ class PerformancesController < ApplicationController
         lat: location.latitude,
         lng: location.longitude,
       }
+    end
   end
 end

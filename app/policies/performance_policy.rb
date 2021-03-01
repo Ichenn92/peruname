@@ -5,11 +5,11 @@ class PerformancePolicy < ApplicationPolicy
     end
   end
 
-<<<<<<< HEAD
   def show?
-=======
+    true
+  end
+
   def search?
->>>>>>> master
     true
   end
 end
