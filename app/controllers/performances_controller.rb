@@ -14,6 +14,13 @@ class PerformancesController < ApplicationController
     authorize @performance = Performance.find(params[:id])
   end
 
+  def new
+    if current_user.actor?
+      @user = current_user
+      authorize @performance = Performance.new(user: @user)
+    end
+  end
+
   private
 
   def no_result_found
