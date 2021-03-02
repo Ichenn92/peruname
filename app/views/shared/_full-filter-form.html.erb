@@ -1,0 +1,37 @@
+<div class="full-filter-bar">
+
+  <%= form_tag performances_search_path, method: :get do %>
+    <%= text_field_tag :address,
+                       params[:address],
+                       class: "form-control algolia-places-custom",
+                       placeholder: "Choose a location" %>
+    <%= collection_select :performance, :character_category,
+                          CharacterCategory.all,
+                          :id, :name,
+                          { prompt: "Category", include_blank: "All" },
+                          { class: "form-control" } %>
+    <%= text_field_tag :date,
+                       params[:date],
+                       as: :string,
+                       class: "datepicker form-control",
+                       placeholder: "Pick a date" %>
+    <% # add line other options %>
+    <%= collection_select :performance, :performance_category,
+                          PerformanceCategory.all,
+                          :id, :name,
+                          { prompt: "Acting category" },
+                          { class: "form-control" } %>
+    <%= time_select :performance,
+                    :availability_start_time,
+                    { prompt: "Start time", ignore_date: true, discard_minute: true },
+                    { class: "form-control inline" } %>
+    <%= time_select :performance,
+                    :availability_end_time,
+                    { prompt: "End time", ignore_date: true, discard_minute: true },
+                    { class: "form-control inline" } %>
+
+
+    <%= submit_tag "Apply", class: "btn btn-dark btn-search" %>
+  <% end %>
+  
+</div>

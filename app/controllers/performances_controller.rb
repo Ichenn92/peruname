@@ -1,6 +1,7 @@
 class PerformancesController < ApplicationController
   include Pundit
   skip_before_action :authenticate_user!, only: [:search, :show]
+  skip_after_action :verify_policy_scoped, :only => :search
 
   def search
     authorize @performances = Performance.search_near_performances_with_filter(params)
