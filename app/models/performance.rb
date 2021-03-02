@@ -17,7 +17,25 @@ class Performance < ApplicationRecord
     performances = Performance.joins(:location).near(params[:address], 5)
 
     if params[:performance][:character_category].present?
-      performances = performances.where(character_id: params[:performance][:character_category])
+      performances = performances.joins(:character_category).where(character_category: { id: params[:performance][:character_category] })
+    end
+
+    if params[:performance][:performance_category].present?
+      performances = performances.where(performance_category: params[:performance][:performance_category])
+    end
+
+    if params[:performance]["availability_start_time(4i)"].present? && params[:performance]["availability_end_time(4i)"].present?
+      start_time = Tod::TimeOfDay::new(params[:performance]["availability_start_time(4i)"])
+      end_time = Tod::TimeOfDay::new(params[:performance]["availability_end_time(4i)"])
+
+      if start_time < end_time
+        shift = Tod::Shift.new(start_time, end_time)
+        performances = performances.select do |performance|
+          actor = performance.user
+          actor_shift = Tod::Shift.new(actor.availability_start_time, actor.availability_end_time)
+          actor_shift.contains? shift
+        end
+      end
     end
 
     performances

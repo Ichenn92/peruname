@@ -8,8 +8,10 @@ var mapIsShown = false;
 
 const addMarkers = (map, markers) => {
   markers.forEach((marker) => {
+    const popup = new mapboxgl.Popup().setHTML(marker.infowindow);
     new mapboxgl.Marker()
       .setLngLat([marker.lng, marker.lat])
+      .setPopup(popup)
       .addTo(map);
   });
 };

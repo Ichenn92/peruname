@@ -11,6 +11,16 @@
     margin-left: -50px; 
 }
 
+#button-filter {
+    border-radius: 5em;
+    width: 100px;
+    position: absolute;
+    right: 50px;
+    top: 30px;
+    margin-left: -50px; 
+    z-index: 1;
+}
+
 
 @media (min-width: 768px) {
     #button-switch-map {
