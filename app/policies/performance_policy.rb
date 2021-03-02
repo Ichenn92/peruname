@@ -12,4 +12,8 @@ class PerformancePolicy < ApplicationPolicy
   def search?
     true
   end
+
+  def new?
+    user.actor
+  end
 end

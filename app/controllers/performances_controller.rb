@@ -1,9 +1,10 @@
 class PerformancesController < ApplicationController
   include Pundit
   skip_before_action :authenticate_user!, only: [:search, :show]
+  skip_after_action :verify_authorized, only: [:search, :show]
 
   def search
-    authorize @performances = Performance.search_near_performances_with_filter(params)
+    @performances = Performance.search_near_performances_with_filter(params)
 
     return no_result_found if @performances.empty?
 
@@ -12,6 +13,13 @@ class PerformancesController < ApplicationController
 
   def show
     authorize @performance = Performance.find(params[:id])
+  end
+
+  def new
+    if current_user.actor?
+      @user = current_user
+      authorize @performance = Performance.new(user: @user)
+    end
   end
 
   private
@@ -27,6 +35,7 @@ class PerformancesController < ApplicationController
         {
           lat: performance.location.latitude,
           lng: performance.location.longitude,
+          infowindow: render_to_string(partial: "info_window", locals: { performance: performance }),
         }
       end
     end
