@@ -28,6 +28,7 @@ class PerformancesController < ApplicationController
         {
           lat: performance.location.latitude,
           lng: performance.location.longitude,
+          infowindow: render_to_string(partial: "info_window", locals: { performance: performance }),
         }
       end
     end
