@@ -2,12 +2,10 @@ class PerformancesController < ApplicationController
   include Pundit
   skip_before_action :authenticate_user!, only: [:search, :show]
 
-  def show
-    authorize @performance = Performance.find(params[:id])
-  end
-
   def search
     authorize @all_locations = Location.near(params[:address], 5) # default radius of 5km
+
+    return no_result_found if @all_locations.nil?
 
     if params[:performance][:character_category].present?
       @performances = get_performances_from_locations_by_character_category
@@ -16,6 +14,8 @@ class PerformancesController < ApplicationController
       @locations = @all_locations
       @performances = get_all_performances_from_locations
     end
+
+    return no_result_found if @performances.empty?
 
     set_markers
   end
@@ -26,9 +26,12 @@ class PerformancesController < ApplicationController
 
   private
 
-  def set_markers
+  def no_result_found
+    flash.now[:alert] = "No result found"
+    render "pages/home"
+  end
 
-    # the `geocoded` scope filters only flats with coordinates (latitude & longitude)
+  def set_markers # the `geocoded` scope filters only flats with coordinates (latitude & longitude)
     if @locations
       @markers = @locations.map do |location|
         {
