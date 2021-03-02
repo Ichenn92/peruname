@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-
   include Pundit
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
@@ -21,10 +20,11 @@ class ApplicationController < ActionController::Base
   #   redirect_to(root_path)
   # end
 
+  add_flash_types :success, :warning
+
   private
 
   def skip_pundit?
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
   end
-
 end
