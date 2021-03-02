@@ -6,6 +6,7 @@ class Performance < ApplicationRecord
   belongs_to :location
 
   has_one :character_category, through: :character
+  has_many_attached :photos
   belongs_to :performance_category
 
   validates :user, presence: true

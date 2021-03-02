@@ -88,8 +88,40 @@ giselle = { nickname: "Gibella", first_name: "Giselle", last_name: "Schmidt", em
 eytan = { nickname: "Tannenbaum", first_name: "Eytan", last_name: "Bergstein", email: "eytan.bergstein@gmail.com", password: "123456", actor: false, availability_start_time: Tod::TimeOfDay.new(19, 30), availability_end_time: Tod::TimeOfDay.new(23, 00) }
 canelle = { nickname: "Canelloni", first_name: "Caroline", last_name: "Maupas", email: "caroline.maupas@gmail.com", password: "123456", actor: true, availability_start_time: Tod::TimeOfDay.new(19, 30), availability_end_time: Tod::TimeOfDay.new(22, 15) }
 gontrand = { nickname: "El Capo", first_name: "Gaston", last_name: "Capo", email: "gaston.capo@gmail.com", password: "123456", actor: true, availability_start_time: Tod::TimeOfDay.new(17, 45), availability_end_time: Tod::TimeOfDay.new(20, 30) }
-[alain, giselle, eytan, canelle, gontrand].each do |attribute|
+
+photos = [
+  {
+    io: URI.open('https://kitt.lewagon.com/placeholder/users/michaellaurac'),
+    filename: 'alain.png',
+    content_type: 'image/png'
+  },
+  {
+    io: URI.open('https://kitt.lewagon.com/placeholder/users/Ichenn92'),
+    filename: 'giselle.png',
+    content_type: 'image/png'
+  },
+  {
+    io: URI.open('https://kitt.lewagon.com/placeholder/users/clem13-coder'),
+    filename: 'eytan.png',
+    content_type: 'image/png'
+  },
+  {
+    io: URI.open('https://upload.wikimedia.org/wikipedia/commons/6/62/Thomas_Wiesel.png'),
+    filename: 'canelle.png',
+    content_type: 'image/png'
+  },
+  {
+    io: URI.open('https://agenda.culturevalais.ch/uploads/thumbs_default/76/7629c29157f6c6213455a23d26f88dbc.jpg'),
+    filename: 'gontrand.png',
+    content_type: 'image/png'
+  }
+]
+
+[alain, giselle, eytan, canelle, gontrand].each_with_index do |attribute, index|
   user = User.create!(attribute)
+
+  user.photo.attach(io: photos[index][:io], filename: photos[index][:filename], content_type: photos[index][:content_type])
+
   puts "Signing up a new user nicknamed #{user.nickname}: #{user.first_name} #{user.last_name}"
 end
 
@@ -154,8 +186,64 @@ performance_10 = { description: "Lorem ipsum dolor sit amet, consectetur adipisc
                   user: User.find_by_nickname("Gibella"),
                   performance_category: PerformanceCategory.find_by_name("Depressive"),
                   location: Location.find_by_name("Freddie Mercury Statue") }
-[ performance_1, performance_2, performance_3, performance_4, performance_5, performance_6, performance_7, performance_8, performance_9, performance_10 ].each do |attribute|
+photos = [
+  {
+    io: URI.open('https://images.unsplash.com/photo-1592525969064-afa927e72ccf?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'),
+    filename: 'performance_1.png',
+    content_type: 'image/png'
+  },
+  {
+    io: URI.open('https://images.unsplash.com/photo-1520697227012-1a7f0fd6c5c1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80'),
+    filename: 'performance_2.png',
+    content_type: 'image/png'
+  },
+  {
+    io: URI.open('https://images.unsplash.com/uploads/14110635637836178f553/dcc2ccd9?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'),
+    filename: 'performance_3.png',
+    content_type: 'image/png'
+  },
+  {
+    io: URI.open('https://images.unsplash.com/photo-1519200566043-99f14d08fcf9?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'),
+    filename: 'performance_4.png',
+    content_type: 'image/png'
+  },
+  {
+    io: URI.open('https://images.unsplash.com/photo-1517976547714-720226b864c1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'),
+    filename: 'performance_5.png',
+    content_type: 'image/png'
+  },
+  {
+    io: URI.open('https://images.unsplash.com/photo-1541606927369-6a93c81d94e4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=80'),
+    filename: 'performance_6.png',
+    content_type: 'image/png'
+  },
+  {
+    io: URI.open('https://images.unsplash.com/photo-1597570889212-97f48e632dad?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1355&q=80'),
+    filename: 'performance_7.png',
+    content_type: 'image/png'
+  },
+  {
+    io: URI.open('https://images.unsplash.com/photo-1573167130797-8453176c73d0?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'),
+    filename: 'performance_8.png',
+    content_type: 'image/png'
+  },
+   {
+    io: URI.open('https://images.unsplash.com/photo-1609372332255-611485350f25?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80'),
+    filename: 'performance_9.png',
+    content_type: 'image/png'
+  },
+   {
+    io: URI.open('https://images.unsplash.com/photo-1544994130-e784812e3f07?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'),
+    filename: 'performance_10.png',
+    content_type: 'image/png'
+  }
+]
+
+[ performance_1, performance_2, performance_3, performance_4, performance_5, performance_6, performance_7, performance_8, performance_9, performance_10 ].each_with_index do |attribute, index|
   performance = Performance.create!(attribute)
+
+  performance.photos.attach(io: photos[index][:io], filename: photos[index][:filename], content_type: photos[index][:content_type])
+
   puts "Assisting to a new #{performance.performance_category.name.downcase} performance of #{performance.character.name} interpreted by #{performance.user.nickname} at #{performance.location.name} "
 end
 

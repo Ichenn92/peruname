@@ -6,6 +6,7 @@ class User < ApplicationRecord
   serialize :availability_start_time, Tod::TimeOfDay
   serialize :availability_end_time, Tod::TimeOfDay
 
+  has_one_attached :photo
   has_many :performances
   validates_associated :performances
 
