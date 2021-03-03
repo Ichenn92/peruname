@@ -64,6 +64,6 @@ class PerformancesController < ApplicationController
   end
 
   def performance_params
-    params.require(:performance).permit(:description, :price_per_hour, :character, :performance_category, :location, )
+    params.require(:performance).permit(:description, :price_per_hour, :character, :performance_category, :location, :character_category)
   end
 end
