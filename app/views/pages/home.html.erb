@@ -3,9 +3,27 @@
 <% content_for(:logo, "Logo-white.png") %>
 
 <div class="banner">
-  <div class="banner-content text-center">
-    <h1>Let's have fun</h1>
-    <p>Book a unique performance in a unique place</p>
-    <%= render 'shared/search-form' %>
-  </div>
+
+  <br>
+
+    <div class="banner-content text-center">
+      <h1>Let's have fun</h1>
+      <p>Book a unique performance in a unique place</p>
+      <%= render "shared/search-form" %>
+    </div>
+
+    <% unless current_user && current_user.actor? %>
+      <section id="become-actor">
+        <div class="banner-content text-center text-white border-top border-bottom p-4">
+          <h2>Want to be an actor?</h2>
+          <p>Join the Swiss actor community</p>
+          <button class="btn btn-outline-light btn-lg btn-block mb-2">
+            <%= link_to "Apply", "user_setting", class: "text-white" %>
+          </button>
+        </div>
+      </section>
+    <% end %>
+
+  <br>
+
 </div>

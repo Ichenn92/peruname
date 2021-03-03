@@ -1,6 +1,7 @@
 .banner {
   height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
   align-items: center;
   background-image: linear-gradient(rgba(0,0,0, 0.4), rgba(0,0,0,0.4)), image-url("background-funny.jpeg");
