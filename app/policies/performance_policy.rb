@@ -13,7 +13,7 @@ class PerformancePolicy < ApplicationPolicy
     true
   end
 
-  def new?
+  def create?
     user.actor
   end
 end
