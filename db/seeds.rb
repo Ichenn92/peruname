@@ -131,7 +131,7 @@ performance_1 = { description: "The Brandon you will meet is the typical charact
                   character: Character.find_by_name("Brandon"),
                   user: User.find_by_nickname("Alibaba"),
                   performance_category: PerformanceCategory.find_by_name("Romantic"),
-                  location: Location.find_by_name("Le Montriond") }
+                  location: Location.find_by_address("Le Montriond") }
 performance_2 = { description: "Are you looking for an unusual and rare date? Have you ever thought of dinning with the person who might very well have stuffed a family member of the quarry animal you are having for dinner.",
                   price_per_hour: 51,
                   character: Character.find_by_name("Taxidermist"),
