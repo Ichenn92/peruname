@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   get "performances/search"
   resources :performances, only: %i[show new create]
   put "users/settings"
+
+  resources :bookings, only: [:index, :create]
 end
