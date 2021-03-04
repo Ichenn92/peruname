@@ -5,6 +5,14 @@ $navbar-height: 80px;
   justify-content: space-between;
   background: white;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);
+  ul {
+  position: absolute;
+  right: 50px;
+  top: 14px;
+  }
+  .dropdown-menu{
+position:absolute;
+}
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -19,9 +27,20 @@ $navbar-height: 80px;
   background: transparent;
   box-shadow: none;
   width: 100%;
+  position:absolute;
   a.nav-link {
     color: white;
   }
+  ul {
+  position: absolute;
+  right: 50px;
+  top: 14px;
+  }
+  .dropdown-menu{
+position:absolute;
+background-color: white
+
+}
 }
 
 .next {
