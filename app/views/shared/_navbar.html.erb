@@ -14,7 +14,7 @@
       <ul class="navbar-nav mr-auto">
         <% if user_signed_in? %>
           <li class="nav-item">
-            <%= link_to "Meet a new character", "/", class: "nav-link" %>
+            <%= link_to "Meet a new character", "root_path", class: "nav-link" %>
           </li>
           <li class="nav-item">
             <%= link_to "My bookings", "#", class: "nav-link" %>
@@ -29,13 +29,13 @@
               <% end %>
             </li>
           <% end %>
+
           <li class="nav-item dropdown">
             <% if current_user.photo.key.nil? %>
               <%= cl_image_tag("default_profile_um6sky.jpg", :default_image => "default_profile_um6sky.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false) %>
             <% else %>
               <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <% end %>
-
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
               <%= link_to "Meet a new character", "#", class: "dropdown-item" %>
               <%= link_to "My bookings", "#", class: "dropdown-item" %>

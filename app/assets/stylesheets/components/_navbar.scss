@@ -5,10 +5,18 @@ $navbar-height: 80px;
   justify-content: space-between;
   background: white;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);
+
 }
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
+}
+
+.navbar-collapse {
+  background-color: white;
+  float: center;
+  overflow:hidden;
+  text-align:center;
 }
 
 .navbar-lewagon .navbar-brand img {
@@ -19,8 +27,15 @@ $navbar-height: 80px;
   background: transparent;
   box-shadow: none;
   width: 100%;
+  position:absolute;
   a.nav-link {
     color: white;
+  }
+  .navbar-collapse {
+  background-color: transparent;
+  float: center;
+  overflow:hidden;
+  text-align:center;
   }
 }
 
@@ -31,4 +46,7 @@ $navbar-height: 80px;
   opacity: 0;
 }
 
+.navbar-nav {
+  flex-direction: column-reverse;
+}
 
