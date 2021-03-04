@@ -18,8 +18,6 @@ module Peruname
     # handling must be disabled for database time types
     config.active_record.time_zone_aware_types = [:datetime]
 
-    config.assets.initialize_on_precompile = false
-
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
 
