@@ -9,8 +9,6 @@ class Performance < ApplicationRecord
   has_many_attached :photos
   belongs_to :performance_category
 
-  accepts_nested_attributes_for :character_category, reject_if: proc { |x| x[:name].blank? }
-
   validates :user, presence: true
   validates :character, presence: true
   validates :character_category, presence: true
