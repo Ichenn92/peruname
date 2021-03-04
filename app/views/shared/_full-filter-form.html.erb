@@ -1,38 +1,45 @@
 <div class="sidebar translated-down" id="sidebar">
+
+  <button class="btn btn-light btn-lg" id="button-close"><i class="fas fa-times" id="symbol-filter"></i></button>
   <div class="full-filter-bar container">
 
     <%= form_tag performances_search_path, method: :get do %>
-      <%= label_tag "Basic options", nil, class: "mt-4" %>
+      <h3>Basic options</h3>
+      <%= label_tag "Lieu" %>
       <%= text_field_tag :address,
                          params[:address],
                          class: "form-control algolia-places-custom",
                          placeholder: "Choose a location" %>
+      <%= label_tag "Univers du charactère" %>
       <%= collection_select :performance, :character_category,
                             CharacterCategory.all,
                             :id, :name,
                             { prompt: "Category", include_blank: "All", selected: params[:performance][:character_category] },
                             { class: "form-control" } %>
+      <%= label_tag "Date" %>
       <%= text_field_tag :date,
                          params[:date],
                          as: :string,
                          class: "datepicker form-control",
                          placeholder: "Pick a date" %>
 
-      <%= label_tag "More options", nil, class: "mt-4" %>
+      <h3 class="mt-4">More options</h3>
+      <%= label_tag "Style de performance" %>
       <%= collection_select :performance, :performance_category,
                             PerformanceCategory.all,
                             :id, :name,
                             { prompt: "Acting category", selected: params[:performance][:performance_category] },
                             { class: "form-control" } %>
+      <%= label_tag "Start time" %>
       <%= time_select :performance,
                       :availability_start_time,
-                      { prompt: "Start time (hour)", ignore_date: true, discard_minute: true, selected: params[:performance]["availability_start_time(4i)"].to_i },
+                      { prompt: true, ignore_date: true, discard_minute: true, selected: params[:performance]["availability_end_time(4i)"].blank? ? nil : params[:performance]["availability_end_time(4i)"].to_i },
                       { class: "form-control" } %>
+      <%= label_tag "End time" %>
       <%= time_select :performance,
                       :availability_end_time,
-                      { prompt: "End time (hour)", ignore_date: true, discard_minute: true, selected: params[:performance]["availability_end_time(4i)"].to_i },
+                      { prompt: true, ignore_date: true, discard_minute: true, selected: params[:performance]["availability_end_time(4i)"].blank? ? nil : params[:performance]["availability_end_time(4i)"].to_i },
                       { class: "form-control" } %>
-
 
       <%= submit_tag "Apply", class: "btn btn-primary w-100 mt-4" %>
     <% end %>
