@@ -1,10 +1,17 @@
 <div class="container p-4">
   <%= simple_form_for @performance do |f| %>
-    <%= f.input :character %>
-    <%= f.input :character_category %>
+    <%= simple_fields_for :character do |p| %>
+      <%= p.input :name, label: "Character Name" %>
+    <% end %>
+    <%= simple_fields_for :character_category do |c| %>
+      <%= c.input :name, label: "Character Category" %>
+    <% end %>
     <%= f.input :performance_category %>
     <%= f.input :description %>
-    <%= f.input :location %>
+    <%= simple_fields_for :location do |p| %>
+      <%= p.input :name, :label => "Location Name" %>
+      <%= p.input :address %>
+    <% end %>
     <%= f.input :price_per_hour %>
     <%= f.submit "Submit performance", class: "btn btn-primary" %>
   <% end %>

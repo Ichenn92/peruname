@@ -83,11 +83,11 @@ miscellaneous = { name: "Miscellaneous" }
 end
 
 puts "Registering a few user..."
-alain = { nickname: "Alibaba", first_name: "Alain", last_name: "Berclaz", email: "alain.berclaz@gmail.com", password: "123456", actor: true, availability_start_time: Tod::TimeOfDay.new(18, 15), availability_end_time: Tod::TimeOfDay.new(19, 45) }
-giselle = { nickname: "Gibella", first_name: "Giselle", last_name: "Schmidt", email: "giselle.schmidt@gmail.com", password: "123456", actor: true, availability_start_time: Tod::TimeOfDay.new(12, 00), availability_end_time: Tod::TimeOfDay.new(16, 00) }
-eytan = { nickname: "Tannenbaum", first_name: "Eytan", last_name: "Bergstein", email: "eytan.bergstein@gmail.com", password: "123456", actor: false, availability_start_time: Tod::TimeOfDay.new(19, 30), availability_end_time: Tod::TimeOfDay.new(23, 00) }
-canelle = { nickname: "Canelloni", first_name: "Caroline", last_name: "Maupas", email: "caroline.maupas@gmail.com", password: "123456", actor: true, availability_start_time: Tod::TimeOfDay.new(19, 30), availability_end_time: Tod::TimeOfDay.new(22, 15) }
-gontrand = { nickname: "El Capo", first_name: "Gaston", last_name: "Capo", email: "gaston.capo@gmail.com", password: "123456", actor: true, availability_start_time: Tod::TimeOfDay.new(17, 45), availability_end_time: Tod::TimeOfDay.new(20, 30) }
+alain = { nickname: "Alibaba", first_name: "Alain", last_name: "Berclaz", email: "alain.berclaz@gmail.com", password: "123456", actor: true, availability_start_time: Tod::TimeOfDay.new(18), availability_end_time: Tod::TimeOfDay.new(19) }
+giselle = { nickname: "Gibella", first_name: "Giselle", last_name: "Schmidt", email: "giselle.schmidt@gmail.com", password: "123456", actor: true, availability_start_time: Tod::TimeOfDay.new(12), availability_end_time: Tod::TimeOfDay.new(16) }
+eytan = { nickname: "Tannenbaum", first_name: "Eytan", last_name: "Bergstein", email: "eytan.bergstein@gmail.com", password: "123456", actor: false, availability_start_time: Tod::TimeOfDay.new(19), availability_end_time: Tod::TimeOfDay.new(23) }
+canelle = { nickname: "Canelloni", first_name: "Caroline", last_name: "Maupas", email: "caroline.maupas@gmail.com", password: "123456", actor: true, availability_start_time: Tod::TimeOfDay.new(19), availability_end_time: Tod::TimeOfDay.new(22) }
+gontrand = { nickname: "El Capo", first_name: "Gaston", last_name: "Capo", email: "gaston.capo@gmail.com", password: "123456", actor: true, availability_start_time: Tod::TimeOfDay.new(17), availability_end_time: Tod::TimeOfDay.new(20) }
 
 photos = [
   {
@@ -131,7 +131,7 @@ performance_1 = { description: "The Brandon you will meet is the typical charact
                   character: Character.find_by_name("Brandon"),
                   user: User.find_by_nickname("Alibaba"),
                   performance_category: PerformanceCategory.find_by_name("Romantic"),
-                  location: Location.find_by_address("Le Montriond") }
+                  location: Location.find_by_name("Le Montriond") }
 performance_2 = { description: "Are you looking for an unusual and rare date? Have you ever thought of dinning with the person who might very well have stuffed a family member of the quarry animal you are having for dinner.",
                   price_per_hour: 51,
                   character: Character.find_by_name("Taxidermist"),
