@@ -8,7 +8,7 @@
     <%= collection_select :performance, :character_category,
                           CharacterCategory.all,
                           :id, :name,
-                          { prompt: "Category", include_blank: "All" },
+                          { prompt: "All categories" },
                           { class: "form-control" } %>
     <%= text_field_tag :date,
                        params[:date],
