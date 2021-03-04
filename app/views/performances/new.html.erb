@@ -1,18 +1,11 @@
 <div class="container p-4">
   <%= simple_form_for @performance do |f| %>
-    <%= simple_fields_for :character do |p| %>
-      <%= p.input :name, label: "Character Name" %>
-    <% end %>
-    <%= simple_fields_for :character_category do |c| %>
-      <%= c.input :name, label: "Character Category" %>
-    <% end %>
-    <%= f.input :performance_category %>
-    <%= f.input :description %>
-    <%= simple_fields_for :location do |p| %>
-      <%= p.input :name, :label => "Location Name" %>
-      <%= p.input :address %>
-    <% end %>
-    <%= f.input :price_per_hour %>
+    <%= f.association :character, include_blank: "<Select a character>" %>
+    <%= f.input :character_category, collection: CharacterCategory.all, include_blank: "<Select a character category>" %>
+    <%= f.association :performance_category, include_blank: "<Select a performance category>" %>
+    <%= f.input :description, placeholder: "<Enter a description...>" %>
+    <%= f.input :location, :label => "Location Name", collection: Location.all.map{|l| "#{l.name} / #{l.address}"}, include_blank: "<Select a location>" %>
+    <%= f.input :price_per_hour, placeholder: "<Enter a price per hour...>" %>
     <%= f.submit "Submit performance", class: "btn btn-primary" %>
   <% end %>
 </div>

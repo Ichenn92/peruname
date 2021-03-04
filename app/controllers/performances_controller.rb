@@ -23,18 +23,20 @@ class PerformancesController < ApplicationController
 
   def create
     if current_user.actor?
-      @character_category = CharacterCategory.find_or_create_by(name: params[:character_category][:name])
-      # @character = Character.find_or_create_by(name: character_params[:name]) do |character|
-      #   character.character_category = @character_category
-      # end
-      @performance_category = PerformanceCategory.find_or_create_by(name: performance_params[:performance_category])
-      @location = Location.find_or_create_by(address: performance_params[:location])
-      authorize @performance = Performance.new({ description: performance_params[:description],
-                                                     price_per_hour: performance_params[:price_per_hour],
-                                                     character: @character,
-                                                     performance_category: @performance_category,
-                                                     location: @location,
-                                                     user: current_user })
+      @character = Character.find(performance_params[:character_id].to_i) unless performance_params[:character_id].blank?
+      @character_category = CharacterCategory.find(performance_params[:character_category].to_i) unless performance_params[:character_category].blank?
+      @performance_category = PerformanceCategory.find(performance_params[:performance_category_id].to_i) unless performance_params[:performance_category_id].blank?
+      @description = performance_params[:description] unless performance_params[:description].blank?
+      @location = Location.find_by_name(performance_params[:location].split(' / ').first) unless performance_params[:location].blank?
+      @price_per_hour = performance_params[:price_per_hour] unless performance_params[:price_per_hour].blank?
+
+      authorize @performance = Performance.new({ description: @description,
+                                                  price_per_hour: @price_per_hour,
+                                                  character: @character,
+                                                  character_category: @character_category,
+                                                  performance_category: @performance_category,
+                                                  location: @location,
+                                                  user: current_user })
       current_user.actor = current_user.performances.count > 0
       if @performance.save
         redirect_to performance_path(@performance)
@@ -64,7 +66,6 @@ class PerformancesController < ApplicationController
   end
 
   def performance_params
-    params.require(:performance).permit(:description, :price_per_hour, :performance_category, 
-      character_category_attributes: [:name])
+    params.require(:performance).permit(:character_id, :character_category, :performance_category_id, :location, :description, :price_per_hour)
   end
 end

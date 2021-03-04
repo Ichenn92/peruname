@@ -8,14 +8,13 @@
     <%= collection_select :performance, :character_category,
                           CharacterCategory.all,
                           :id, :name,
-                          { prompt: "Category", include_blank: "All" },
+                          { prompt: "All categories" },
                           { class: "form-control" } %>
     <%= text_field_tag :date,
                        params[:date],
                        as: :string,
                        class: "datepicker form-control",
                        placeholder: "Pick a date" %>
-    <% # date_select :start_date, :startdate , :class => 'datepicker' %>
     <%= submit_tag "Search", class: "btn btn-dark btn-search" %>
   <% end %>
   
