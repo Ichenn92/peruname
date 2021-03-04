@@ -29,9 +29,13 @@
               <% end %>
             </li>
           <% end %>
-          <li class="nav-item dropdown dropdown-menu-right">
-            <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <%= cl_image_tag("default_profile_um6sky.jpg", :default_image => "default_profile_um6sky.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false) %>
+
+          <li class="nav-item dropdown">
+            <% if current_user.photo.key.nil? %>
+              <%= cl_image_tag("default_profile_um6sky.jpg", :default_image => "default_profile_um6sky.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false) %>
+            <% else %>
+              <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% end %>
 
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
               <%= link_to "Meet a new character", "#", class: "dropdown-item" %>
@@ -41,6 +45,7 @@
                 <%= link_to "New performance", new_performance_path, class: "dropdown-item" %>
               <% end %>
 
+              <%= link_to "Settings", edit_user_registration_path, class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
             </div>
           </li>
