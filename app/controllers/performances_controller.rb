@@ -17,8 +17,30 @@ class PerformancesController < ApplicationController
 
   def new
     if current_user.actor?
-      @user = current_user
-      authorize @performance = Performance.new(user: @user)
+      authorize @performance = Performance.new
+    end
+  end
+
+  def create
+    if current_user.actor?
+      @character_category = CharacterCategory.find_or_create_by(name: performance_params[:character_category])
+      @character = Character.find_or_create_by(name: performance_params[:character]) do |character|
+        character.character_category = @character_category
+      end
+      @performance_category = PerformanceCategory.find_or_create_by(name: performance_params[:performance_category])
+      @location = Location.find_or_create_by(address: performance_params[:location])
+      authorize @performance = Performance.new({ description: performance_params[:description],
+                                                     price_per_hour: performance_params[:price_per_hour],
+                                                     character: @character,
+                                                     performance_category: @performance_category,
+                                                     location: @location,
+                                                     user: current_user })
+      current_user.actor = current_user.performances.count > 0
+      if @performance.save
+        redirect_to performance_path(@performance)
+      else
+        render :new
+      end 
     end
   end
 
@@ -39,5 +61,9 @@ class PerformancesController < ApplicationController
         }
       end
     end
+  end
+
+  def performance_params
+    params.require(:performance).permit(:description, :price_per_hour, :character, :performance_category, :location, :character_category)
   end
 end
