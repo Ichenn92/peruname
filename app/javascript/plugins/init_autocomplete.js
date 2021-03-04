@@ -7,7 +7,7 @@ const initAutocomplete = () => {
     places({ container: addressInput });
   }
   
-  const performanceAddressInput = document.getElementById('performance_location');
+  const performanceAddressInput = document.getElementById('location_address');
   if (performanceAddressInput) {
     places({ container: performanceAddressInput });
   }
