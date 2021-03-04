@@ -12,13 +12,26 @@
 }
 
 #button-filter {
-    border-radius: 5em;
-    width: 100px;
+    border-radius: 8px;
+    width: 64px;
     position: absolute;
     right: 50px;
     top: 30px;
     margin-left: -50px; 
     z-index: 1;
+    box-shadow: 0 10px 30px rgba($color: #000000, $alpha: .3);
+}
+
+#button-close {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    margin-left: -50px; 
+    z-index: 1;
+    box-shadow: 0 0 8px rgba($color: #000000, $alpha: .2);
 }
 
 
