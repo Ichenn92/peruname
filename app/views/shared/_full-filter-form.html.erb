@@ -17,22 +17,22 @@
                          as: :string,
                          class: "datepicker form-control",
                          placeholder: "Pick a date" %>
-
-      <%= label_tag "More options", nil, class: "mt-4" %>
+      <%= label_tag "More options", nil, class: "mt-4 text-fat" %>
       <%= collection_select :performance, :performance_category,
                             PerformanceCategory.all,
                             :id, :name,
                             { prompt: "Acting category", selected: params[:performance][:performance_category] },
                             { class: "form-control" } %>
+      <%= label_tag "Availibity start time" %>
       <%= time_select :performance,
                       :availability_start_time,
                       { prompt: "Start time (hour)", ignore_date: true, discard_minute: true, selected: params[:performance]["availability_start_time(4i)"].to_i },
                       { class: "form-control" } %>
+      <%= label_tag "Availibity end time" %>
       <%= time_select :performance,
                       :availability_end_time,
                       { prompt: "End time (hour)", ignore_date: true, discard_minute: true, selected: params[:performance]["availability_end_time(4i)"].to_i },
                       { class: "form-control" } %>
-
 
       <%= submit_tag "Apply", class: "btn btn-primary w-100 mt-4" %>
     <% end %>
