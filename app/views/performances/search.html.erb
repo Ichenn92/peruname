@@ -1,8 +1,8 @@
-<div class="row m-0 position-relative">
+<div class="d-flex m-0 position-relative">
 
   <button class="btn btn-light btn-lg" id="button-filter"><i class="fas fa-filter" id="symbol-filter"></i></button>
 
-  <div class="col-xs-12 col-md-7 d-md-block p-0" id="performances-column">
+  <div class="d-lg-block p-0" id="performances-column">
     <ul class="cards-performance full-height-without-navbar">
       <% @performances.each do |performance| %>
         <li class="card-performance">
@@ -12,7 +12,7 @@
     </ul>
   </div>
 
-  <div class="col-xs-12 col-md-5 d-none d-md-block map-container full-height-without-navbar"
+  <div class="flex-grow-1 d-none d-lg-block map-container full-height-without-navbar"
       id="map"
       data-markers="<%= @markers.to_json %>"
       data-mapbox-api-key="<%= ENV["MAPBOX_API_KEY"] %>">
