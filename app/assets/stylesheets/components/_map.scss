@@ -2,6 +2,10 @@
     width: 100%;
 }
 
+.btn-map {
+    box-shadow: 0 10px 30px rgba($color: #000000, $alpha: .3);
+}
+
 #button-switch-map {
     border-radius: 5em;
     width: 100px;
@@ -19,7 +23,6 @@
     top: 30px;
     margin-left: -50px; 
     z-index: 1;
-    box-shadow: 0 10px 30px rgba($color: #000000, $alpha: .3);
 }
 
 #button-close {
