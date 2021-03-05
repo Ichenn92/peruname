@@ -12,3 +12,8 @@ $navbar-height: 80px;
 .navbar-lewagon .navbar-brand img {
   width: 120px;
 }
+
+.navbar-nav {
+  flex-direction: column-reverse;
+  text-align: center;
+}
