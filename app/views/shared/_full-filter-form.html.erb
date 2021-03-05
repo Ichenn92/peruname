@@ -1,48 +1,53 @@
 <div class="sidebar translated-down" id="sidebar">
+  <div class="sidebar-container">
+    <button class="btn btn-light btn-lg" id="button-close"><i class="fas fa-times" id="symbol-filter"></i></button>
 
-  <button class="btn btn-light btn-lg" id="button-close"><i class="fas fa-times" id="symbol-filter"></i></button>
-  <div class="full-filter-bar container">
+    <div class="sidebar-scrollable">
+      <div class="full-filter-bar container">
+        <%= form_tag performances_search_path, id: "filter-form", method: :get do %>
+          <h3>Basic options</h3>
+          <%= label_tag "Lieu" %>
+          <%= text_field_tag :address,
+                             params[:address],
+                             class: "form-control algolia-places-custom",
+                             placeholder: "Choose a location" %>
+          <%= label_tag "Univers du charactère" %>
+          <%= collection_select :performance, :character_category,
+                                CharacterCategory.all,
+                                :id, :name,
+                                { prompt: "Category", include_blank: "All", selected: params[:performance][:character_category] },
+                                { class: "form-control" } %>
+          <%= label_tag "Date" %>
+          <%= text_field_tag :date,
+                             params[:date],
+                             as: :string,
+                             class: "datepicker form-control",
+                             placeholder: "Pick a date" %>
 
-    <%= form_tag performances_search_path, method: :get do %>
-      <h3>Basic options</h3>
-      <%= label_tag "Lieu" %>
-      <%= text_field_tag :address,
-                         params[:address],
-                         class: "form-control algolia-places-custom",
-                         placeholder: "Choose a location" %>
-      <%= label_tag "Univers du charactère" %>
-      <%= collection_select :performance, :character_category,
-                            CharacterCategory.all,
-                            :id, :name,
-                            { prompt: "Category", include_blank: "All", selected: params[:performance][:character_category] },
-                            { class: "form-control" } %>
-      <%= label_tag "Date" %>
-      <%= text_field_tag :date,
-                         params[:date],
-                         as: :string,
-                         class: "datepicker form-control",
-                         placeholder: "Pick a date" %>
+          <h3 class="mt-4">More options</h3>
+          <%= label_tag "Style de performance" %>
+          <%= collection_select :performance, :performance_category,
+                                PerformanceCategory.all,
+                                :id, :name,
+                                { prompt: "Acting category", selected: params[:performance][:performance_category] },
+                                { class: "form-control" } %>
+          <%= label_tag "Start time" %>
+          <%= time_select :performance,
+                          :availability_start_time,
+                          { prompt: true, ignore_date: true, discard_minute: true, selected: params[:performance]["availability_end_time(4i)"].blank? ? nil : params[:performance]["availability_end_time(4i)"].to_i },
+                          { class: "form-control" } %>
+          <%= label_tag "End time" %>
+          <%= time_select :performance,
+                          :availability_end_time,
+                          { prompt: true, ignore_date: true, discard_minute: true, selected: params[:performance]["availability_end_time(4i)"].blank? ? nil : params[:performance]["availability_end_time(4i)"].to_i },
+                          { class: "form-control" } %>
 
-      <h3 class="mt-4">More options</h3>
-      <%= label_tag "Style de performance" %>
-      <%= collection_select :performance, :performance_category,
-                            PerformanceCategory.all,
-                            :id, :name,
-                            { prompt: "Acting category", selected: params[:performance][:performance_category] },
-                            { class: "form-control" } %>
-      <%= label_tag "Start time" %>
-      <%= time_select :performance,
-                      :availability_start_time,
-                      { prompt: true, ignore_date: true, discard_minute: true, selected: params[:performance]["availability_end_time(4i)"].blank? ? nil : params[:performance]["availability_end_time(4i)"].to_i },
-                      { class: "form-control" } %>
-      <%= label_tag "End time" %>
-      <%= time_select :performance,
-                      :availability_end_time,
-                      { prompt: true, ignore_date: true, discard_minute: true, selected: params[:performance]["availability_end_time(4i)"].blank? ? nil : params[:performance]["availability_end_time(4i)"].to_i },
-                      { class: "form-control" } %>
+        <% end %>
+        <br>
+        <br>
+      </div>
+    </div>
 
-      <%= submit_tag "Apply", class: "btn btn-primary w-100 mt-4" %>
-    <% end %>
-    
+    <input type="submit" value="Submit" form="filter-form" class="btn btn-primary w-100" id="btn-submit-filter">
   </div>
 </div>
