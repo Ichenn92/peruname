@@ -13,14 +13,13 @@
         <div class="performance-show-card">
           <h2><%= @performance.character.name %></h2>
           <p>Category: <%= @performance.performance_category.name %></p>
-          <p><%=@performance.description %></p>
+          <p><%= @performance.description %></p>
           <h5>Availabilities</h5>
-          <p><%=@performance.user.availability_start_time %> to <%=@performance.user.availability_end_time %></p>
+          <p><%= @performance.user.availability_start_time %> to <%= @performance.user.availability_end_time %></p>
         </div>
       </div>
-      <%= render 'bookings/form' %>
+      <%= render "bookings/form" %>
     </div>
-
     <div class="row">
       <div class="col-xs-12 col-md-8">
         <div class="performance-show-card">
@@ -29,8 +28,13 @@
             <div>
               <i class="fas fa-theater-masks"></i><span> <%= @performance.performance_category.name %></span>
             </div>
-            <div>
-              <i class="fas fa-euro-sign"></i> <%= @performance.price_per_hour %> CHF/hour
+            <div class="text-small">
+              <span class="text-bold">
+                CHF <%= @performance.price_per_hour %>
+              </span>
+              <span class="text-regular">
+                /hour
+              </span>
             </div>
           </div>
         </div>
@@ -47,4 +51,5 @@
       </div>
     </div>
   </div>
+
 </div>
