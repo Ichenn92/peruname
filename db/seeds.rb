@@ -85,36 +85,36 @@ end
 puts "Registering a few user..."
 alain = { nickname: "Alibaba", first_name: "Alain", last_name: "Berclaz", email: "alain.berclaz@gmail.com", password: "123456", actor: true, availability_start_time: Tod::TimeOfDay.new(18), availability_end_time: Tod::TimeOfDay.new(19) }
 giselle = { nickname: "Gibella", first_name: "Giselle", last_name: "Schmidt", email: "giselle.schmidt@gmail.com", password: "123456", actor: true, availability_start_time: Tod::TimeOfDay.new(12), availability_end_time: Tod::TimeOfDay.new(16) }
-eytan = { nickname: "Tannenbaum", first_name: "Eytan", last_name: "Bergstein", email: "eytan.bergstein@gmail.com", password: "123456", actor: false, availability_start_time: Tod::TimeOfDay.new(19), availability_end_time: Tod::TimeOfDay.new(23) }
+eytan = { nickname: "Tannenbaum", first_name: "Eytan", last_name: "Bergstein", email: "eytan.bergstein@gmail.com", password: "123456", actor: true, availability_start_time: Tod::TimeOfDay.new(19), availability_end_time: Tod::TimeOfDay.new(23) }
 canelle = { nickname: "Canelloni", first_name: "Caroline", last_name: "Maupas", email: "caroline.maupas@gmail.com", password: "123456", actor: true, availability_start_time: Tod::TimeOfDay.new(19), availability_end_time: Tod::TimeOfDay.new(22) }
 gontrand = { nickname: "El Capo", first_name: "Gaston", last_name: "Capo", email: "gaston.capo@gmail.com", password: "123456", actor: true, availability_start_time: Tod::TimeOfDay.new(17), availability_end_time: Tod::TimeOfDay.new(20) }
 
 photos = [
   {
-    io: URI.open('https://kitt.lewagon.com/placeholder/users/michaellaurac'),
-    filename: 'alain.png',
-    content_type: 'image/png'
+    io: URI.open("https://kitt.lewagon.com/placeholder/users/michaellaurac"),
+    filename: "alain.png",
+    content_type: "image/png",
   },
   {
-    io: URI.open('https://kitt.lewagon.com/placeholder/users/Ichenn92'),
-    filename: 'giselle.png',
-    content_type: 'image/png'
+    io: URI.open("https://kitt.lewagon.com/placeholder/users/Ichenn92"),
+    filename: "giselle.png",
+    content_type: "image/png",
   },
   {
-    io: URI.open('https://kitt.lewagon.com/placeholder/users/clem13-coder'),
-    filename: 'eytan.png',
-    content_type: 'image/png'
+    io: URI.open("https://kitt.lewagon.com/placeholder/users/clem13-coder"),
+    filename: "eytan.png",
+    content_type: "image/png",
   },
   {
-    io: URI.open('https://upload.wikimedia.org/wikipedia/commons/6/62/Thomas_Wiesel.png'),
-    filename: 'canelle.png',
-    content_type: 'image/png'
+    io: URI.open("https://upload.wikimedia.org/wikipedia/commons/6/62/Thomas_Wiesel.png"),
+    filename: "canelle.png",
+    content_type: "image/png",
   },
   {
-    io: URI.open('https://agenda.culturevalais.ch/uploads/thumbs_default/76/7629c29157f6c6213455a23d26f88dbc.jpg'),
-    filename: 'gontrand.png',
-    content_type: 'image/png'
-  }
+    io: URI.open("https://agenda.culturevalais.ch/uploads/thumbs_default/76/7629c29157f6c6213455a23d26f88dbc.jpg"),
+    filename: "gontrand.png",
+    content_type: "image/png",
+  },
 ]
 
 [alain, giselle, eytan, canelle, gontrand].each_with_index do |attribute, index|
@@ -181,70 +181,82 @@ performance_9 = { description: "If you're fund of animal chasing and mangas, you
                   performance_category: PerformanceCategory.find_by_name("Parody"),
                   location: Location.find_by_name("Terrasse des Grandes Roches") }
 performance_10 = { description: "All carried by her engagement and enthusiam of her great causes are not enough to cheer Greta and let her hope for a better future.",
-                  price_per_hour: 46,
-                  character: Character.find_by_name("Greta Thunberg"),
-                  user: User.find_by_nickname("Gibella"),
-                  performance_category: PerformanceCategory.find_by_name("Depressive"),
-                  location: Location.find_by_name("Freddie Mercury Statue") }
+                   price_per_hour: 46,
+                   character: Character.find_by_name("Greta Thunberg"),
+                   user: User.find_by_nickname("Gibella"),
+                   performance_category: PerformanceCategory.find_by_name("Depressive"),
+                   location: Location.find_by_name("Freddie Mercury Statue") }
 photos = [
   {
-    io: URI.open('https://images.unsplash.com/photo-1592525969064-afa927e72ccf?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'),
-    filename: 'performance_1.png',
-    content_type: 'image/png'
+    io: URI.open("https://images.unsplash.com/photo-1592525969064-afa927e72ccf?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"),
+    filename: "performance_1.png",
+    content_type: "image/png",
   },
   {
-    io: URI.open('https://images.unsplash.com/photo-1520697227012-1a7f0fd6c5c1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80'),
-    filename: 'performance_2.png',
-    content_type: 'image/png'
+    io: URI.open("https://images.unsplash.com/photo-1520697227012-1a7f0fd6c5c1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"),
+    filename: "performance_2.png",
+    content_type: "image/png",
   },
   {
-    io: URI.open('https://images.unsplash.com/uploads/14110635637836178f553/dcc2ccd9?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'),
-    filename: 'performance_3.png',
-    content_type: 'image/png'
+    io: URI.open("https://images.unsplash.com/uploads/14110635637836178f553/dcc2ccd9?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"),
+    filename: "performance_3.png",
+    content_type: "image/png",
   },
   {
-    io: URI.open('https://images.unsplash.com/photo-1519200566043-99f14d08fcf9?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'),
-    filename: 'performance_4.png',
-    content_type: 'image/png'
+    io: URI.open("https://images.unsplash.com/photo-1519200566043-99f14d08fcf9?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"),
+    filename: "performance_4.png",
+    content_type: "image/png",
   },
   {
-    io: URI.open('https://images.unsplash.com/photo-1517976547714-720226b864c1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'),
-    filename: 'performance_5.png',
-    content_type: 'image/png'
+    io: URI.open("https://images.unsplash.com/photo-1517976547714-720226b864c1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"),
+    filename: "performance_5.png",
+    content_type: "image/png",
   },
   {
-    io: URI.open('https://images.unsplash.com/photo-1541606927369-6a93c81d94e4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=80'),
-    filename: 'performance_6.png',
-    content_type: 'image/png'
+    io: URI.open("https://images.unsplash.com/photo-1541606927369-6a93c81d94e4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=80"),
+    filename: "performance_6.png",
+    content_type: "image/png",
   },
   {
-    io: URI.open('https://images.unsplash.com/photo-1597570889212-97f48e632dad?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1355&q=80'),
-    filename: 'performance_7.png',
-    content_type: 'image/png'
+    io: URI.open("https://images.unsplash.com/photo-1597570889212-97f48e632dad?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1355&q=80"),
+    filename: "performance_7.png",
+    content_type: "image/png",
   },
   {
-    io: URI.open('https://images.unsplash.com/photo-1573167130797-8453176c73d0?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'),
-    filename: 'performance_8.png',
-    content_type: 'image/png'
+    io: URI.open("https://images.unsplash.com/photo-1573167130797-8453176c73d0?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"),
+    filename: "performance_8.png",
+    content_type: "image/png",
   },
-   {
-    io: URI.open('https://images.unsplash.com/photo-1609372332255-611485350f25?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80'),
-    filename: 'performance_9.png',
-    content_type: 'image/png'
+  {
+    io: URI.open("https://images.unsplash.com/photo-1609372332255-611485350f25?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"),
+    filename: "performance_9.png",
+    content_type: "image/png",
   },
-   {
-    io: URI.open('https://images.unsplash.com/photo-1544994130-e784812e3f07?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'),
-    filename: 'performance_10.png',
-    content_type: 'image/png'
-  }
+  {
+    io: URI.open("https://images.unsplash.com/photo-1544994130-e784812e3f07?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"),
+    filename: "performance_10.png",
+    content_type: "image/png",
+  },
 ]
 
-[ performance_1, performance_2, performance_3, performance_4, performance_5, performance_6, performance_7, performance_8, performance_9, performance_10 ].each_with_index do |attribute, index|
+[performance_1, performance_2, performance_3, performance_4, performance_5, performance_6, performance_7, performance_8, performance_9, performance_10].each_with_index do |attribute, index|
   performance = Performance.create!(attribute)
 
   performance.photos.attach(io: photos[index][:io], filename: photos[index][:filename], content_type: photos[index][:content_type])
 
   puts "Assisting to a new #{performance.performance_category.name.downcase} performance of #{performance.character.name} interpreted by #{performance.user.nickname} at #{performance.location.name} "
+end
+
+20.times do
+  booking = Booking.new(
+    date: Date.new(2021, rand(1..12), rand(1..28)),
+    start_time: Tod::TimeOfDay.new(rand(8..12)),
+    end_time: Tod::TimeOfDay.new(rand(13..17)),
+    client_id: rand(1..5),
+    performance: Performance.find(rand(1..10)),
+  )
+  booking.actor_id = booking.performance.user.id
+  booking.save!
 end
 
 puts "Ready to enjoy the show!"

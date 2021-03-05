@@ -6,6 +6,8 @@ class User < ApplicationRecord
   serialize :availability_start_time, Tod::TimeOfDay
   serialize :availability_end_time, Tod::TimeOfDay
 
+  has_many :shows, class_name: "Booking", foreign_key: "actor_id"
+  has_many :events, class_name: "Booking", foreign_key: "client_id"
   has_one_attached :photo
   has_many :performances
   validates_associated :performances
