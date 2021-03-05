@@ -26,6 +26,7 @@ import { initMapbox } from '../plugins/init_mapbox';
 import { initAutocomplete } from '../plugins/init_autocomplete';
 import { initFlatpickr } from '../plugins/init_flatpickr';
 import { initToggleSidebar } from '../plugins/init_toggle_sidebar';
+import { initTimepicker } from '../plugins/init_timepicker';
 
 // Events
 document.addEventListener('turbolinks:load', () => {

@@ -247,4 +247,6 @@ photos = [
   puts "Assisting to a new #{performance.performance_category.name.downcase} performance of #{performance.character.name} interpreted by #{performance.user.nickname} at #{performance.location.name} "
 end
 
+booking_1 = { date: Date.new(2021, 03, 19), start_time: Tod::TimeOfDay.new(18), end_time: Tod::TimeOfDay.new(19), user: User.find_by_nickname("Alibaba"), performance: performance_6 }
+
 puts "Ready to enjoy the show!"
