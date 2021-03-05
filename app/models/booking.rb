@@ -11,8 +11,8 @@ class Booking < ApplicationRecord
 
   validates_presence_of :date, :start_time, :end_time
 
-  scope :my_upcomming_events, -> { where("client_id = ? AND date >= ?", current_user.id, Date.today) }
-  scope :my_upcomming_performances, -> { where("actor_id = ? AND date >= ?", current_user.id, Date.today) }
+  scope :my_upcoming_events, -> { where("client_id = ? AND date >= ?", current_user.id, Date.today) }
+  scope :my_upcoming_performances, -> { where("actor_id = ? AND date >= ?", current_user.id, Date.today) }
 
   private
 

@@ -2,25 +2,15 @@
 
 <div class="col-md-4 col-xs-12 booking-scroll">
   <div class="performance-show-card">
-<div class="input-group mb-2">
-<%= form_tag(bookings_path, method: 'post') do %>
-  <h3>Book your performance now!</h3>
-  <%= hidden_field_tag 'booking[performance_id]', @performance.id %>
-
-  <%= text_field_tag :date,
-                             params[:date],
-                             as: :string,
-                             class: "datepicker form-control",
-                             placeholder: "Pick a date" %>
-</div>
-<div class="input-group mb-2">
-    <input type="text" id="timepicker-input" placeholder="Start Time" />
-</div>
-
-<div class="input-group mb-2">
-    <input type="text" id="timepicker-input" placeholder="End Time" />
-</div>
-  <%= button_tag 'Book', class: 'btn btn-primary mt-3' %>
-<% end %>
- </div>
+    <h3>Book your performance now!</h3> 
+    <%= simple_form_for @booking, method: "post" do |f| %>
+      <%= f.input :performance, as: :hidden %>
+      <%= f.input :date, as: :string,
+                         input_html: { class: "datepicker" },
+                         placeholder: "Pick a date" %>
+      <%= f.input :start_time %>
+      <%= f.input :end_time %>
+      <%= f.submit "Book", class: "btn btn-primary mt-3" %>
+    <% end %>
+  </div>
 </div>
