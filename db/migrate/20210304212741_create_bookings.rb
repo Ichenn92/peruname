@@ -4,7 +4,11 @@ class CreateBookings < ActiveRecord::Migration[6.1]
       t.datetime :date
       t.time :start_time
       t.time :end_time
-      t.decimal :total_cost, default: 0.0
+      t.integer :price
+      t.integer :status, default: 0
+      t.integer :client_id, null: false, index: true
+      t.integer :actor_id, null: false, index: true
+      t.references :performance, null: false, foreign_key: true
 
       t.timestamps
     end

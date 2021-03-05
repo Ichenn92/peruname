@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_05_144201) do
+ActiveRecord::Schema.define(version: 2021_03_04_212741) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,12 +47,16 @@ ActiveRecord::Schema.define(version: 2021_03_05_144201) do
     t.datetime "date"
     t.time "start_time"
     t.time "end_time"
+    t.integer "price"
+    t.integer "status", default: 0
+    t.integer "client_id", null: false
+    t.integer "actor_id", null: false
+    t.bigint "performance_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id", null: false
-    t.bigint "performance_id", null: false
+    t.index ["actor_id"], name: "index_bookings_on_actor_id"
+    t.index ["client_id"], name: "index_bookings_on_client_id"
     t.index ["performance_id"], name: "index_bookings_on_performance_id"
-    t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
   create_table "character_categories", force: :cascade do |t|
@@ -124,7 +128,6 @@ ActiveRecord::Schema.define(version: 2021_03_05_144201) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bookings", "performances"
-  add_foreign_key "bookings", "users"
   add_foreign_key "characters", "character_categories"
   add_foreign_key "performances", "characters"
   add_foreign_key "performances", "locations"
