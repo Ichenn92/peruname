@@ -1,4 +1,4 @@
-<section id="actor-settings">
+<div id="actor-settings">
   <h2>Actor</h2>
   <%= form_tag users_settings_path, method: "put" do |f| %>
     <%= label_tag "At what time would you start performing?", nil %>
@@ -12,4 +12,4 @@
                     { class: "form-control" } %>
     <%= submit_tag "Add or update your availabilities", class: "btn btn-success btn-block my-4" %>
   <% end %>
-</section>
+</div>

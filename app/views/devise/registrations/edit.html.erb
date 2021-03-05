@@ -47,7 +47,20 @@
     </div>
 
     <div class="col-sm12 col-md-6 my-4">
-      <%= render "devise/shared/settings" %>
+      <% if current_user.actor? %>
+        <%= render "devise/shared/settings" %>
+      <% else %>
+        <section id="become-an-actor">
+          <div id="wanna-be-actor">
+            <h2>Want to be an actor?</h2>
+            <p>Press "Start my journey" and fill your availability time</p>
+            <button class="btn btn-primary btn-block" id="start-my-journey">Start my journey</button>
+          </div>
+          <div class="d-none" id="actor-settings-hidden">
+            <%= render "devise/shared/settings" %>
+          </div>
+        </section>
+      <% end %>
       <br>
     </div>
 
