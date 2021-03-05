@@ -3,7 +3,12 @@
 
     <div class="col-xs-12 col-sm-5 p-0 images-presentation">
       <div class="h-100 p-3 image-container">
-        <img src= <%= "https://source.unsplash.com/400x300/?#{performance.character.name}" %> />
+        <% if performance.photos.attached? %>
+          <%# raise %>
+          <%= cl_image_tag performance.photos.first.key, height: 300, width: 400, crop: :fill %>
+        <% else %>
+          <img src=<%= "https://source.unsplash.com/400x300/?#{performance.character.name}" %> />
+        <% end %>
       </div>
       <div class="ranking">
         <h2 class="text-mode-gradient brand-color text-small">
@@ -21,7 +26,11 @@
               <%= performance.character.name %>
             </h2>
           </div>
-          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="avatar-bordered" />
+          <% if performance.user.photo.attached? %>
+            <%= cl_image_tag(performance.user.photo.key, width: 150, height: 150, crop: :thumb, gravity: :face, class: "avatar-bordered") %>
+          <% else %>
+            <%= cl_image_tag("default_profile_um6sky.jpg", :default_image => "default_profile_um6sky.jpg", class: "avatar-bordered") %>
+          <% end %>
         </div>
 
         <br>
