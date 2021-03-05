@@ -9,13 +9,15 @@ class Performance < ApplicationRecord
   has_many_attached :photos
   belongs_to :performance_category
 
+  has_many :bookings
+
   validates :user, presence: true
   validates :character, presence: true
   validates :character_category, presence: true
   validates :location, presence: true
   validates :price_per_hour, presence: true
 
-  
+
 
   def self.search_near_performances_with_filter(params)
     performances = Performance.joins(:location).near(params[:address], 5)

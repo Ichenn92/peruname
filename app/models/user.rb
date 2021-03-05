@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :performances
   validates_associated :performances
 
+  has_many :bookings
+
   validates_presence_of :nickname, :first_name, :last_name
   validates_inclusion_of :actor, in: [true, false]
 
