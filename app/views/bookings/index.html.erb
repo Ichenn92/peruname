@@ -1,7 +1,6 @@
 <div class="bookings-container">
-  <h1>All my bookings</h1>
-
   <div class="bookings-list">
+    <h1>All my bookings</h1>
     <% @bookings.each do |booking| %>
       <div class="card-trip">
         <img src=<%= booking.performance.img_url %> />
