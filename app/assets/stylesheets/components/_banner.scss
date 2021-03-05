@@ -1,5 +1,5 @@
 .banner {
-  height: 90vh;
+  height: calc(100vh - 71px);
   display: flex;
   flex-direction: column;
   justify-content: space-around;
