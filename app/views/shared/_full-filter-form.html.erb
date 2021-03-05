@@ -4,7 +4,7 @@
 
     <div class="sidebar-scrollable">
       <div class="full-filter-bar container">
-        <%= form_tag performances_search_path, html: { id: "filter-form" }, method: :get do %>
+        <%= form_tag performances_search_path, id: "filter-form", method: :get do %>
           <h3>Basic options</h3>
           <%= label_tag "Lieu" %>
           <%= text_field_tag :address,
@@ -48,6 +48,6 @@
       </div>
     </div>
 
-    <input type="submit" value="Submit" form="filter-form" class="btn btn-primary w-100" id="button-submit-filter">
+    <input type="submit" value="Submit" form="filter-form" class="btn btn-primary w-100" id="btn-submit-filter">
   </div>
 </div>
