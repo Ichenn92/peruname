@@ -26,6 +26,7 @@ import { initMapbox } from '../plugins/init_mapbox';
 import { initAutocomplete } from '../plugins/init_autocomplete';
 import { initFlatpickr } from '../plugins/init_flatpickr';
 import { initToggleSidebar } from '../plugins/init_toggle_sidebar';
+import { initBecomeAnActor } from '../plugins/init_become_an_actor';
 
 // Events
 document.addEventListener('turbolinks:load', () => {
@@ -33,4 +34,5 @@ document.addEventListener('turbolinks:load', () => {
   initAutocomplete();
   initFlatpickr();
   initToggleSidebar();
+  initBecomeAnActor();
 });
