@@ -1,5 +1,5 @@
 <header>
-  <div class="navbar navbar-expand-sm navbar-light navbar-lewagon fixed-top <%= yield(:navbar_class) %>">
+  <div class="navbar navbar-expand-sm navbar-light navbar-lewagon <%= yield(:navbar_class) %>">
     <%= link_to root_path, class: "navbar-brand" do %>
       <% logo = content_for?(:logo) ? yield(:logo) : "Logo-green.png" %>
       <%= image_tag logo, class: "rounded" %>
@@ -34,9 +34,9 @@
             <% if current_user.photo.key.nil? %>
               <%= cl_image_tag("default_profile_um6sky.jpg", :default_image => "default_profile_um6sky.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false) %>
             <% else %>
-              <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+              <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-expanded': false %>
             <% end %>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <div class="dropdown-menu dropdown-menu-right drop-down-wagon", 'aria-haspopup': true, aria-labelledby="navbarDropdown">
               <%= link_to "Meet a new character", "#", class: "dropdown-item" %>
               <%= link_to "My bookings", "#", class: "dropdown-item" %>
               <% if current_user.actor %>
@@ -57,6 +57,9 @@
     </div>
   </div>
 
-    <div class="next <%= yield(:no_display_class) %>"></div>
+  
+  <!--
+  <div class="next <%= yield(:no_display_class) %>"></div>
+  -->
 
 </header>
