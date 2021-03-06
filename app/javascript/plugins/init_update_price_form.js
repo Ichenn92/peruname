@@ -34,7 +34,7 @@ const initUpdatePriceForm = () => {
     const totalPrice = duration * priceHour;
     if (totalPrice > 0) {
       inputsIsValid();
-      totalPrice_dom.value = totalPrice;
+      totalPrice_dom.value = `${totalPrice} CHF`;
   } else {
       inputsIsInvalid();
       totalPrice_dom.value = "Error.. Verify your inputs";

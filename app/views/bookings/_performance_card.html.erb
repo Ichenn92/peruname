@@ -3,10 +3,10 @@
 
   <% if booking.pending? && current_user == booking.actor %>
     <div class="" id="buttons-booking">
-      <%= link_to booking_reject_path(booking), method: "post" do %>
+      <%= link_to booking_reject_path(booking), method: "post", remote: true do %>
         <button class="btn btn-danger btn-lg position-absolute m-4" id="btn-reject" style="top:75px;left:0;">Reject</button>
       <% end %>
-      <%= link_to booking_confirm_path(booking), method: "post" do %>
+      <%= link_to booking_confirm_path(booking), method: "post", remote: true do %>
         <button class="btn btn-success btn-lg position-absolute m-4" id="btn-confirm" style="top:75px;right:0;">Accept</button>
       <% end %>
     </div>

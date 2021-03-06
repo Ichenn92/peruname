@@ -31,6 +31,7 @@ class PerformancesController < ApplicationController
       @description = performance_params[:description] unless performance_params[:description].blank?
       @location = Location.find_by_name(performance_params[:location].split(" / ").first) unless performance_params[:location].blank?
       @price_per_hour = performance_params[:price_per_hour] unless performance_params[:price_per_hour].blank?
+      @photo = performance_params[:photo] unless performance_params[:photo].blank?
 
       authorize @performance = Performance.new({ description: @description,
                                                  price_per_hour: @price_per_hour,
@@ -41,6 +42,7 @@ class PerformancesController < ApplicationController
                                                  user: current_user })
       current_user.actor = current_user.performances.count > 0
       if @performance.save
+        @performance.photos.attach(@photo)
         redirect_to performance_path(@performance)
       else
         render :new
@@ -73,6 +75,6 @@ class PerformancesController < ApplicationController
   end
 
   def performance_params
-    params.require(:performance).permit(:character_id, :character_category, :performance_category_id, :location, :description, :price_per_hour)
+    params.require(:performance).permit(:character_id, :character_category, :performance_category_id, :location, :description, :price_per_hour, :photo)
   end
 end
