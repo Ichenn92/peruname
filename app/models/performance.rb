@@ -22,7 +22,7 @@ class Performance < ApplicationRecord
   scope :all_my_performances, ->(user) { where("user_id = ?", user.id) }
 
   def self.search_near_performances_with_filter(params)
-    performances = Performance.joins(:location).near(params[:address], 5)
+    performances = Performance.joins(:location).near(params[:address], 100)
 
     if params[:performance][:character_category].present?
       performances = performances.joins(:character_category).where(character_category: { id: params[:performance][:character_category] })

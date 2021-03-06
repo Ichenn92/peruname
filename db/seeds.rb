@@ -12,24 +12,20 @@ Location.destroy_all
 PerformanceCategory.destroy_all
 Character.destroy_all
 CharacterCategory.destroy_all
+Booking.destroy_all
 
 puts "Placing locations on the map..."
-zoom = { name: "Zoom" }
-slack = { name: "Slack" }
-skype = { name: "Skype" }
 caffe_spettacolo = { name: "Caffè Spettacolo", address: "Place de la Gare 3, 1001 Lausanne" }
-cafe_de_la_plage = { name: "Café de La Plage - Grand Théâtre de Genève", address: "Place de Neuve 5, 1204 Genève" }
 etoile = { name: "L'Etoile", address: "Quai Jean-Pascal Delamuraz 1, 1006 Lausanne" }
 montriond = { name: "Le Montriond", address: "Avenue Édouard Dapples 25, 1006 Lausanne" }
 petit_theatre = { name: "Le Petit Théâtre", address: "Place de la Cathédrale 12, 1005 Lausanne" }
 terrasse_des_grandes_roches = { name: "Terrasse des Grandes Roches", address: "Escaliers des Grandes-Roches, 1003 Lausanne" }
-freddy_mercury_statue = { name: "Freddie Mercury Statue", address: "Place du Marché, 1820 Montreux" }
 theatre_des_lutins = { name: "Théâtre des Lutins", address: "Rue du Petit-Saint-Jean 1A, 1003 Lausanne" }
 theatre_du_vide_poche = { name: "Théâtre du Vide-Poche", address: "Place de la Palud 10, 1003 Lausanne" }
 restaurant_du_theatre = { name: "Restaurant du Théâtre", address: "Avenue du Théâtre 12, 1005 Lausanne" }
 theatre_2_21 = { name: "Théâtre 2.21", address: "Rue de l'Industrie 10, 1005 Lausanne" }
 cafe_restaurant_le_valentin = { name: "Café Restaurant Le Valentin", address: "Rue du Valentin 30, 1004 Lausanne" }
-culture_cafe = { nane: "Culture Café", address: "Rue de Genève 6, 1003 Lausanne" }
+culture_cafe = { name: "Culture Café", address: "Rue de Genève 6, 1003 Lausanne" }
 cafe_des_artisans = { name: "Café des Artisans", address: "Rue Centrale 16, 1003 Lausanne" }
 the_coffee_project = { name: "The Coffee Project", address: "Rue Marterey 1-3, 1005 Lausanne" }
 cafe_la_couronne_d_or = { name: "Café La Couronne d'Or", address: "Rue des Deux-Marchés 13, 1005 Lausanne" }
@@ -38,16 +34,11 @@ cafe_restaurant_mozart = { name: "Café Restaurant Mozart", address: "Rue de la 
 cafe_des_avenues = { name: "Café des Avenues", address: "Avenue de Jurigoz, Avenue de Montchoisi 20, 1006 Lausanne" }
 cafe_de_grancy = { name: "Café de Grancy", address: "Avenue du Rond-Point 1, 1006 Lausanne" }
 
-[ zoom, 
-  slack, 
-  skype, 
-  caffe_spettacolo, 
-  cafe_de_la_plage, 
+[ caffe_spettacolo, 
   etoile, 
   montriond, 
   petit_theatre, 
   terrasse_des_grandes_roches, 
-  freddy_mercury_statue, 
   theatre_des_lutins, 
   theatre_du_vide_poche,
   restaurant_du_theatre,
@@ -59,7 +50,8 @@ cafe_de_grancy = { name: "Café de Grancy", address: "Avenue du Rond-Point 1, 10
   cafe_la_couronne_d_or,
   coccinelle_cafe,
   cafe_restaurant_mozart,
-  cafe_des_avenues ].each do |attribute|
+  cafe_des_avenues,
+  cafe_de_grancy ].each do |attribute|
   location = Location.create!(attribute)
   puts "Setting a marker for #{location.name}"
 end
@@ -154,7 +146,7 @@ william_tell = { name: "William Tell", character_category: CharacterCategory.fin
   president_of_the_united_states,
   reporter,
   pediatric_heart_surgeon,
-  ceo,
+  chief_executive_officer,
   brandon, 
   julia, 
   michel, 
@@ -192,7 +184,7 @@ end
 puts "Registering a few user..."
 alain = { nickname: "Alibaba", first_name: "Alain", last_name: "Berclaz", email: "alain.berclaz@gmail.com", password: "123456", actor: true, availability_start_time: Tod::TimeOfDay.new(10), availability_end_time: Tod::TimeOfDay.new(19) }
 giselle = { nickname: "Gibella", first_name: "Giselle", last_name: "Schmidt", email: "giselle.schmidt@gmail.com", password: "123456", actor: true, availability_start_time: Tod::TimeOfDay.new(8), availability_end_time: Tod::TimeOfDay.new(16) }
-eytan = { nickname: "Tannenbaum", first_name: "Eytan", last_name: "Bergstein", email: "eytan.bergstein@gmail.com", password: "123456", actor: true, availability_start_time: Tod::TimeOfDay.new(15), availability_end_time: Tod::TimeOfDay.new(23) }
+eytan = { nickname: "Tannenbaum", first_name: "Eytan", last_name: "Bergstein", email: "eytan.bergstein@gmail.com", password: "123456", actor: false, availability_start_time: Tod::TimeOfDay.new(15), availability_end_time: Tod::TimeOfDay.new(23) }
 canelle = { nickname: "Canelloni", first_name: "Caroline", last_name: "Maupas", email: "caroline.maupas@gmail.com", password: "123456", actor: true, availability_start_time: Tod::TimeOfDay.new(11), availability_end_time: Tod::TimeOfDay.new(22) }
 gontrand = { nickname: "El Capo", first_name: "Gaston", last_name: "Capo", email: "gaston.capo@gmail.com", password: "123456", actor: true, availability_start_time: Tod::TimeOfDay.new(9), availability_end_time: Tod::TimeOfDay.new(20) }
 
@@ -208,7 +200,7 @@ photos = [
     content_type: "image/png",
   },
   {
-    io: URI.open("https://res.cloudinary.com/clemdub1324/image/upload/v1615029891/pexels-emre-keshavarz-5191436_tmq0nl.jpg"),
+    io: URI.open("https://images.pexels.com/photos/5191436/pexels-photo-5191436.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"),
     filename: "eytan.jpg",
     content_type: "image/jpg",
   },
@@ -256,31 +248,31 @@ performance_4 = { description: "If you have ever heard of Chuck Norris, you will
                   character: Character.find_by_name("Chuck Norris"),
                   user: User.find_by_nickname("El Capo"),
                   performance_category: PerformanceCategory.find_by_name("Funny"),
-                  location: Location.find_by_name("Caffè Spettacolo") }
+                  location: Location.find_by_name("Café Restaurant Le Valentin") }
 performance_5 = { description: "Everyone knows about Elon Musk, but only a few have had a chance to speak with him. He's actually a very fragile guy with a little success when smartphone cameras are not shooting. Poor boy.",
                   price_per_hour: 31,
                   character: Character.find_by_name("Elon Musk"),
                   user: User.find_by_nickname("Alibaba"),
                   performance_category: PerformanceCategory.find_by_name("Depressive"),
-                  location: Location.find_by_name("Café de La Plage - Grand Théâtre de Genève") }
+                  location: Location.find_by_name("Café Restaurant Mozart") }
 performance_6 = { description: "My brothers and sisters, my friends, let me give you a hand with something. I can't help it. Imagine a nun who gets so annoying because she can't help saying the good and helping out. Despicable but fun!",
                   price_per_hour: 36,
                   character: Character.find_by_name("Soeur Emmanuelle"),
                   user: User.find_by_nickname("Gibella"),
                   performance_category: PerformanceCategory.find_by_name("Parody"),
-                  location: Location.find_by_name("Freddie Mercury Statue") }
+                  location: Location.find_by_name("Culture Café") }
 performance_7 = { description: "We all remember our teachers in extreme ways, either very negative or very positive. But do you know any real teacher? A simple interpretation of a teacher with exagerration true to himself, but as stereotyped as shall be.",
                   price_per_hour: 24,
                   character: Character.find_by_name("Teacher"),
                   user: User.find_by_nickname("Canelloni"),
                   performance_category: PerformanceCategory.find_by_name("Realistic"),
-                  location: Location.find_by_name("Le Petit Théâtre") }
+                  location: Location.find_by_name("The Coffee Project") }
 performance_8 = { description: "This is a rare performance which you will never see in nature: a web developer trying to get romantic is like a wild cat trying to be polite, you don't get both in one animal.",
                   price_per_hour: 35,
-                  character: Character.find_by_name("Web Developer"),
+                  character: Character.find_by_name("Web developer"),
                   user: User.find_by_nickname("El Capo"),
                   performance_category: PerformanceCategory.find_by_name("Romantic"),
-                  location: Location.find_by_name("Caffè Spettacolo") }
+                  location: Location.find_by_name("Théâtre du Vide-Poche") }
 performance_9 = { description: "If you're fond of animal chasing and mangas, you know how to catch them all, except this is only chance to catch this one during a special date.",
                   price_per_hour: 49,
                   character: Character.find_by_name("Pikachu"),
@@ -292,7 +284,7 @@ performance_10 = { description: "All carried by her engagement and enthusiam of 
                    character: Character.find_by_name("Greta Thunberg"),
                    user: User.find_by_nickname("Gibella"),
                    performance_category: PerformanceCategory.find_by_name("Depressive"),
-                  location: Location.find_by_name("Freddie Mercury Statue") }
+                  location: Location.find_by_name("L'Etoile") }
 performance_11 = { description: "No one can better represent the pop culture than a Marylin Monroe, who wants to be loved by you.",
                    price_per_hour: 42,
                    character: Character.find_by_name("Marylin Monroe"),
@@ -322,7 +314,7 @@ performance_15 = { description: "Your favorite teenager wizard, with his broomst
                    character: Character.find_by_name("Harry Potter"),
                    user: User.find_by_nickname("Alibaba"),
                    performance_category: PerformanceCategory.find_by_name("Realistic"),
-                   location: Location.find_by_name("Café de la Couronne d'Or") }
+                   location: Location.find_by_name("Café La Couronne d'Or") }
 photos = [
   {
     io: URI.open("https://images.unsplash.com/photo-1592525969064-afa927e72ccf?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"),
@@ -385,17 +377,17 @@ photos = [
     content_type: "image/jpg",
   },
   {
-    io: URI.open("https://pbs.twimg.com/profile_images/1346042465917218820/Dc2ZGKb8.jpg"),
+    io: URI.open("https://cdn.pixabay.com/photo/2016/11/11/12/01/tardis-1816598_1280.jpg"),
     filename: "performance_13.jpg",
     content_type: "image/jpg",
   },
   {
-    io: URI.open("https://cdn.pixabay.com/photo/2016/11/11/12/01/tardis-1816598_1280.jpg"),
+    io: URI.open("https://images.pexels.com/photos/4204094/pexels-photo-4204094.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"),
     filename: "performance_14.jpg",
     content_type: "image/jpg",
   },
   {
-    io: URI.open("https://unsplash.com/photos/3n7DdlkMfEg"),
+    io: URI.open("https://images.unsplash.com/photo-1551269901-5c5e14c25df7?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=3900&q=80"),
     filename: "performance_15.jpg",
     content_type: "image/jpg",
   },
