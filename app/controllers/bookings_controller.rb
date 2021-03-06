@@ -52,5 +52,8 @@ class BookingsController < ApplicationController
   end
 
   def reject
+    authorize @booking = Booking.find(params[:booking_id])
+    @booking.canceled!
+    redirect_to bookings_my_performances_path
   end
 end

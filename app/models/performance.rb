@@ -45,7 +45,7 @@ class Performance < ApplicationRecord
         shift
         performances = performances.select do |performance|
           performance.bookings.none? do |booking|
-            if booking.date == params[:date]
+            if booking.date == params[:date] && booking.status != 1
               booking_shift = Tod::Shift.new(booking.start_time, booking.end_time)
               shift.overlaps?(booking_shift)
             end
