@@ -28,4 +28,12 @@ class User < ApplicationRecord
       errors.add(:availability_end_time, "Must be later than availability start time")
     end
   end
+
+  def remove_actor_role!
+    self.update(
+      availability_start_time: nil,
+      availability_end_time: nil,
+      actor: false,
+    )
+  end
 end

@@ -20,4 +20,8 @@ class BookingPolicy < ApplicationPolicy
   def my_performances?
     true
   end
+  
+  def show?
+    true
+  end
 end
