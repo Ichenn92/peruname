@@ -12,6 +12,10 @@ class PerformancesController < ApplicationController
     set_markers
   end
 
+  def index
+    @performances = policy_scope(Performance).all_my_performances(current_user)
+  end
+
   def show
     authorize @performance = Performance.find(params[:id])
     authorize @booking = Booking.new
@@ -48,6 +52,40 @@ class PerformancesController < ApplicationController
         render :new
       end
     end
+  end
+
+  def edit
+    if current_user.actor?
+      authorize @performance = Performance.find(params[:id])
+    end
+  end
+
+  def update
+    @character = Character.find(performance_params[:character_id].to_i) unless performance_params[:character_id].blank?
+    @character_category = CharacterCategory.find(performance_params[:character_category].to_i) unless performance_params[:character_category].blank?
+    @performance_category = PerformanceCategory.find(performance_params[:performance_category_id].to_i) unless performance_params[:performance_category_id].blank?
+    @description = performance_params[:description] unless performance_params[:description].blank?
+    @location = Location.find_by_name(performance_params[:location].split(" / ").first) unless performance_params[:location].blank?
+    @price_per_hour = performance_params[:price_per_hour] unless performance_params[:price_per_hour].blank?
+    @photo = performance_params[:photo] unless performance_params[:photo].blank?
+    authorize @performance = Performance.find(params[:id])
+    @performance.update(description: @description) unless @description.nil?
+    @performance.update(price_per_hour: @price_per_hour) unless @price_per_hour.nil?
+    @performance.update(character: @character) unless @character.nil?
+    @performance.update(character_category: @character_category) unless @character_category.nil?
+    @performance.update(performance_category: @performance_category) unless @performance_category.nil?
+    @performance.update(location: @location) unless @location.nil?
+    unless @photo.nil?
+      @performance.photos.purge
+      @performance.photos.attach(@photo)
+    end
+    redirect_to performances_path
+  end
+
+  def destroy
+    authorize @performance = Performance.find(params[:id])
+    @performance.destroy
+    redirect_to performances_path
   end
 
   private

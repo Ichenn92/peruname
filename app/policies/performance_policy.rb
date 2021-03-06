@@ -17,11 +17,23 @@ class PerformancePolicy < ApplicationPolicy
     true
   end
 
+  def edit?
+    user == record.user
+  end
+
+  def update?
+    user == record.user
+  end
+
+  def destroy?
+    user == record.user
+  end
+
   def my_bookings?
     true
   end
 
   def my_performances?
-    true
+    user == record.user
   end
 end

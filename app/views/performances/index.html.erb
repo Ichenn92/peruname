@@ -1,0 +1,28 @@
+<div class="container my-4">
+  <div class="bookings-list">
+    <div class="container m-2">
+      <h1>All my Performances</h1>
+    </div>
+    <div class="container" id="performances-column">
+      <ul class="cards-performance full-height-without-navbar">
+        <% @performances.each do |performance| %>
+          <li class="card-performance my-4">
+            <div class="d-flex">
+              <div class="flex-grow-1">
+                <%= render partial: "card_performance", locals: { performance: performance } %>
+              </div>
+              <div class="d-flex flex-column justify-content-start">
+                <%= link_to edit_performance_path(performance), class: "btn btn-warning btn-lg text-white d-flex align-items-center rounded mt-3 mr-3", style: "height: 50px; width: 50px;" do %>
+                  <i class="fas fa-edit"></i>
+                <% end %>
+                <%= link_to performance_path(performance), method: "delete", data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-lg text-white d-flex align-items-center rounded mt-3 mr-3", style: "height: 50px; width: 50px;" do %>
+                  <i class="fas fa-trash-alt"></i>
+                <% end %>
+              </div>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

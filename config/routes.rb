@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   get "performances/search"
-  resources :performances, only: %i[show new create]
+  resources :performances
   put "users/settings"
 
   resources :bookings, only: [:index, :create] do
