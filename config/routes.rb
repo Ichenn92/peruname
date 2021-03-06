@@ -8,4 +8,7 @@ Rails.application.routes.draw do
   put "users/settings"
 
   resources :bookings, only: [:index, :create]
+  get "bookings/my_bookings"
+  get "bookings/my_performances"
+
 end

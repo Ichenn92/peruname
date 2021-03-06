@@ -13,8 +13,14 @@ class Booking < ApplicationRecord
   validate :booking_date_cannot_be_in_past
   validate :actor_is_free
 
-  scope :my_upcoming_events, -> { where("client_id = ? AND date >= ?", current_user.id, Date.today) }
-  scope :my_upcoming_performances, -> { where("actor_id = ? AND date >= ?", current_user.id, Date.today) }
+  default_scope { order(date: :asc) }
+  scope :my_upcoming_pending_events, -> (user) { where("client_id = ? AND date >= ? AND status = ? ", user.id, Date.today, 0) }
+  scope :my_upcoming_canceled_events, -> (user) { where("client_id = ? AND date >= ? AND status = ? ", user.id, Date.today, 1) }
+  scope :my_upcoming_confirmed_events, -> (user) { where("client_id = ? AND date >= ? AND status = ? ", user.id, Date.today, 2) }
+
+  scope :my_upcoming_pending_performances, -> (user) { where("actor_id = ? AND date >= ? AND status = ? ", user.id, Date.today, 0) }
+  scope :my_upcoming_canceled_performances, -> (user) { where("actor_id = ? AND date >= ? AND status = ? ", user.id, Date.today, 1) }
+  scope :my_upcoming_confirmed_performances, -> (user) { where("actor_id = ? AND date >= ? AND status = ? ", user.id, Date.today, 2) }
 
   private
 

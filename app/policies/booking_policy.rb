@@ -13,6 +13,14 @@ class BookingPolicy < ApplicationPolicy
     true
   end
 
+  def my_bookings?
+    true
+  end
+
+  def my_performances?
+    true
+  end
+  
   def show?
     true
   end

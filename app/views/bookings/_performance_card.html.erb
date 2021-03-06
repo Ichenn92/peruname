@@ -1,0 +1,23 @@
+
+<div class="card-trip m-4 position-relative">
+  <% if booking.pending? %>
+    <i class="fas fa-hourglass-half position-absolute text-warning text-big" style="top: 15px; right: 15px;"></i>
+  <% elsif booking.confirmed? %>
+    <i class="fas fa-check-circle position-absolute text-success text-big" style="top: 15px; right: 15px;"></i>
+  <% elsif booking.canceled? %>
+    <i class="fas fa-times-circle position-absolute text-danger text-big" style="top: 15px; right: 15px;"></i>
+  <% end %>
+  <div class="container my-4">
+    <h3><%= booking.performance.character.name %> by me (<%= booking.performance.user.nickname %>) </h3>
+  </div>
+    <%= cl_image_tag booking.performance.photos.first.key %>
+  <div class="card-trip-infos">
+    <div class="card-trip-description">
+      <p>Date: <%= booking.date.strftime("%a, %d %B %Y") %></p>
+      <p>Start Time: <%= booking.start_time.strftime("%I:%M %p") %></p>
+      <p>End Time: <%= booking.start_time.strftime("%I:%M %p") %></p>
+    </div>
+      <h2 class="card-trip-pricing">Total cost: <%= booking.price %> CHF</h2>
+      <%= cl_image_tag(booking.performance.user.photo.key, width: 150, height: 150, crop: :thumb, gravity: :face, class: "avatar-bordered") %>
+  </div>
+</div>

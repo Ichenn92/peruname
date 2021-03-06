@@ -5,15 +5,20 @@ class PerformancePolicy < ApplicationPolicy
     end
   end
 
-  def show?
-    true
-  end
-
-  def search?
+  def index?
     true
   end
 
   def create?
-    user.actor
+    true
+  end
+
+  def my_bookings?
+    true
+  end
+
+  def my_performances?
+    true
   end
 end
+
