@@ -20,8 +20,16 @@ class BookingPolicy < ApplicationPolicy
   def my_performances?
     true
   end
-  
+
   def show?
     true
+  end
+
+  def confirm?
+    record.actor == user
+  end
+
+  def reject?
+    record.actor == user
   end
 end

@@ -247,7 +247,7 @@ photos = [
   puts "Assisting to a new #{performance.performance_category.name.downcase} performance of #{performance.character.name} interpreted by #{performance.user.nickname} at #{performance.location.name} "
 end
 
-until Booking.count > 20
+until Booking.count > 30
   booking = Booking.new(
     date: Date.new(2021, rand(1..12), rand(1..28)),
     start_time: Tod::TimeOfDay.new(rand(8..12)),

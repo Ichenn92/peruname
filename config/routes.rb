@@ -7,8 +7,10 @@ Rails.application.routes.draw do
   resources :performances, only: %i[show new create]
   put "users/settings"
 
-  resources :bookings, only: [:index, :create]
+  resources :bookings, only: [:index, :create] do
+    post "/confirm", to: "bookings#confirm"
+    post "/reject", to: "bookings#reject"
+  end
   get "bookings/my_bookings"
   get "bookings/my_performances"
-
 end

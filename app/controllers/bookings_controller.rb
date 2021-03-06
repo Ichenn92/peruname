@@ -44,4 +44,13 @@ class BookingsController < ApplicationController
       redirect_back fallback_location: performance_path(@performance)
     end
   end
+
+  def confirm
+    authorize @booking = Booking.find(params[:booking_id])
+    @booking.confirmed!
+    redirect_to bookings_my_performances_path
+  end
+
+  def reject
+  end
 end

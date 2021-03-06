@@ -1,23 +1,27 @@
 <div class="container my-4">
-  <div class="bookings-list">
+  <div class="bookings-list mt-4">
     <div class="container m-2">
-      <h1>All my performances</h1>
+      <h1>All my upcoming performances</h1>
     </div>
-    <div class="row">
-      <div class="col-xs-12 col-lg-4">
-        <h2 class="mx-4 my-2">Confirmed</h2>
+    <div class="row pt-4 border-top">
+      <div class="col-xs-12 col-lg-4 bg-info mt-2">
+        <h2 class="mx-4 mt-4 mb-2 text-center">Waiting your answer</h2>
+        <% if @pending_performances %>
+          <% @pending_performances.each do |booking| %>
+            <%= render partial: "performance_card", locals: { booking: booking } %>
+          <% end %>
+        <% else %>
+          <h2 class="mx-4 my-2">You don't have any new request</h2>
+        <% end %>
+      </div>
+      <div class="col-xs-12 col-lg-4 mt-2">
+        <h2 class="mx-4 mt-4 mb-2 text-center">Confirmed</h2>
         <% @confirmed_performances.each do |booking| %>
           <%= render partial: "performance_card", locals: { booking: booking } %>
         <% end %>
       </div>
-      <div class="col-xs-12 col-lg-4">
-        <h2 class="mx-4 my-2">Waiting your answer</h2>
-        <% @pending_performances.each do |booking| %>
-          <%= render partial: "performance_card", locals: { booking: booking } %>
-        <% end %>
-      </div>
-      <div class="col-xs-12 col-lg-4">
-        <h2 class="mx-4 my-2">Canceled</h2>
+      <div class="col-xs-12 col-lg-4 mt-2">
+        <h2 class="mx-4 mt-4 mb-2 text-center">Canceled</h2>
         <% @canceled_performances.each do |booking| %>
           <%= render partial: "performance_card", locals: { booking: booking } %>
         <% end %>
