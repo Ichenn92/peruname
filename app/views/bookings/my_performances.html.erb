@@ -1,0 +1,24 @@
+<div class="container my-4">
+  <div class="bookings-list">
+    <div class="container m-2">
+      <h1>All my performances</h1>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-lg-4">
+        <% @canceled_performances.each do |booking| %>
+          <%= render partial: "performance_card", locals: { booking: booking } %>
+        <% end %>
+      </div>
+      <div class="col-xs-12 col-lg-4">
+        <% @pending_performances.each do |booking| %>
+          <%= render partial: "performance_card", locals: { booking: booking } %>
+        <% end %>
+      </div>
+      <div class="col-xs-12 col-lg-4">
+        <% @confirmed_performances.each do |booking| %>
+          <%= render partial: "performance_card", locals: { booking: booking } %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
