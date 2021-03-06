@@ -1,21 +1,24 @@
-<div class="bookings-container">
+<div class="container my-4">
   <div class="bookings-list">
     <div class="container m-2">
-      <h1>All my bookings</h1>
+      <h1>All my upcoming bookings</h1>
     </div>
     <div class="row">
-      <div class="col-xs-12 col-lg-4">
-        <% @canceled_bookings.each do |booking| %>
+      <div class="col-xs-12 col-lg-4 mt-2">
+        <h2 class="mx-4 mt-4 mb-2 text-center">Confirmed</h2>
+        <% @confirmed_bookings.each do |booking| %>
           <%= render partial: "booking_card", locals: { booking: booking } %>
         <% end %>
       </div>
-      <div class="col-xs-12 col-lg-4">
+      <div class="col-xs-12 col-lg-4 mt-2">
+        <h2 class="mx-4 mt-4 mb-2 text-center">Pending</h2>
         <% @pending_bookings.each do |booking| %>
           <%= render partial: "booking_card", locals: { booking: booking } %>
         <% end %>
       </div>
-      <div class="col-xs-12 col-lg-4">
-        <% @confirmed_bookings.each do |booking| %>
+      <div class="col-xs-12 col-lg-4 mt-2">
+        <h2 class="mx-4 mt-4 mb-2 text-center">Canceled</h2>
+        <% @canceled_bookings.each do |booking| %>
           <%= render partial: "booking_card", locals: { booking: booking } %>
         <% end %>
       </div>

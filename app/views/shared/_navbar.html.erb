@@ -10,14 +10,14 @@
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
       <li class="nav-item active">
-        <%= link_to "Meet a new character", root_path, class: "nav-link" %>
+        <%= link_to "Search a Performance", root_path, class: "nav-link" %>
       </li>
       <li class="nav-item">
-       <%= link_to "My bookings", "/bookings/my_bookings", class: "nav-link" %>
+       <%= link_to "Upcoming events", "/bookings/my_bookings", class: "nav-link" %>
      </li>
      <% if current_user.actor %>
      <li class="nav-item">
-      <%= link_to "My performances", " /bookings/my_performances", class: "nav-link" %>
+      <%= link_to "My upcoming performances", " /bookings/my_performances", class: "nav-link" %>
     </li>
     <li class="nav-item active">
       <%= link_to new_performance_path, class: "nav-link mr-3" do %>
@@ -31,7 +31,7 @@
     <% if current_user.photo.key.nil? %>
       <%= cl_image_tag("default_profile_um6sky.jpg", :default_image => "default_profile_um6sky.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false) %>
     <% else %>
-      <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-expanded': false %>
+      <%= cl_image_tag current_user.photo.key, width: 40, height: 40, crop: :thumb, gravity: :face, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-expanded': false %>
     <% end %>
 
     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">

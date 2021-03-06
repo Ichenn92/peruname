@@ -1,4 +1,5 @@
 <div class="container p-4">
+  <h1>Create a performance</h1>
   <%= simple_form_for @performance do |f| %>
     <%= f.association :character, include_blank: "<Select a character>" %>
     <%= f.input :character_category, collection: CharacterCategory.all, include_blank: "<Select a character category>" %>
@@ -6,6 +7,7 @@
     <%= f.input :description, placeholder: "<Enter a description...>" %>
     <%= f.input :location, :label => "Location Name", collection: Location.all.map { |l| "#{l.name} / #{l.address}" }, include_blank: "<Select a location>" %>
     <%= f.input :price_per_hour, placeholder: "<Enter a price per hour...>" %>
+    <%= f.input :photo, as: :file %>
     <%= f.submit "Submit performance", class: "btn btn-primary" %>
   <% end %>
 </div>

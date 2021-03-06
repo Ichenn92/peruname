@@ -34,7 +34,7 @@
           <%= label_tag "Start time" %>
           <%= time_select :performance,
                           :availability_start_time,
-                          { prompt: true, ignore_date: true, discard_minute: true, selected: params[:performance]["availability_end_time(4i)"].blank? ? nil : params[:performance]["availability_end_time(4i)"].to_i },
+                          { prompt: true, ignore_date: true, discard_minute: true, selected: params[:performance]["availability_start_time(4i)"].blank? ? nil : params[:performance]["availability_start_time(4i)"].to_i },
                           { class: "form-control" } %>
           <%= label_tag "End time" %>
           <%= time_select :performance,

@@ -1,8 +1,8 @@
-const initUpdatePriceForm = () => {
-  const date_dom = document.getElementById("booking_date");
-  const startTime_dom = document.getElementById("booking_start_time_4i");
-  const endTime_dom = document.getElementById("booking_end_time_4i");
-  const submit_dom = document.getElementById("submit-button");
+const initCheckFilterForm = () => {
+  const date_dom = document.getElementById("date");
+  const startTime_dom = document.getElementById("performance_availability_start_time_4i");
+  const endTime_dom = document.getElementById("performance_availability_end_time_4i");
+  const submit_dom = document.getElementById("btn-submit-filter");
 
   const inputsIsInvalid = () => {
     submit_dom.classList.add("disable");
@@ -26,30 +26,29 @@ const initUpdatePriceForm = () => {
     submit_dom.classList.remove("disabled");
   };
 
-  const updateTotalPrice = () => {
-    const priceHour_dom = document.getElementById("booking_Price/hour");
-    const totalPrice_dom = document.getElementById("booking_Price");
+  const checkFields = () => {
     const duration = parseInt(endTime_dom.value, 10) - parseInt(startTime_dom.value, 10);
-    const priceHour = parseInt(priceHour_dom.value, 10);
-    const totalPrice = duration * priceHour;
-    if (totalPrice > 0) {
+    console.log(new Date(date_dom.value) - new Date());
+    console.log(new Date());
+    if (duration > 0 && (new Date(date_dom.value) > new Date())) {
       inputsIsValid();
-      totalPrice_dom.value = `${totalPrice} CHF`;
   } else {
       inputsIsInvalid();
-      totalPrice_dom.value = "Error.. Verify your inputs";
     }
   };
 
   if (startTime_dom && endTime_dom && submit_dom) {
     startTime_dom.addEventListener("change", (e) => {
-      updateTotalPrice();
+      checkFields();
     });
     endTime_dom.addEventListener("change", (e) => {
-      updateTotalPrice();
+      checkFields();
+    });
+    date_dom.addEventListener("change", (e) => {
+      checkFields();
     });
   };
 
 };
 
-export { initUpdatePriceForm };
+export { initCheckFilterForm };

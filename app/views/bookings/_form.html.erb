@@ -6,8 +6,8 @@
       <%= f.input :date, as: :string,
                          input_html: { class: "datepicker" },
                          placeholder: "Pick a date" %>
-      <%= f.input :start_time, { label: "Start hour", discard_minute: true } %>
-      <%= f.input :end_time, { label: "End hour", discard_minute: true } %>
+      <%= f.input :start_time, { prompt: "Choose an hour", label: "Start hour", discard_minute: true } %>
+      <%= f.input :end_time, { prompt: "Choose an hour", label: "End hour", discard_minute: true } %>
       <%= f.input "Price/hour", input_html: { value: "#{@performance.price_per_hour} CHF", disabled: true } %>
       <%= f.input "Price", input_html: { value: "0 CHF", disabled: true } %>
       <%= f.submit "Book", class: "btn btn-primary mt-3 disable disabled", id: "submit-button" %>

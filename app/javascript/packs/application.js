@@ -28,6 +28,7 @@ import { initFlatpickr } from '../plugins/init_flatpickr';
 import { initToggleSidebar } from '../plugins/init_toggle_sidebar';
 import { initBecomeAnActor } from '../plugins/init_become_an_actor';
 import { initUpdatePriceForm } from '../plugins/init_update_price_form';
+import { initCheckFilterForm } from '../plugins/init_check_filter_form';
 
 // Events
 document.addEventListener('turbolinks:load', () => {
@@ -37,4 +38,5 @@ document.addEventListener('turbolinks:load', () => {
   initToggleSidebar();
   initBecomeAnActor();
   initUpdatePriceForm();
+  initCheckFilterForm();
 });

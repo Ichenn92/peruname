@@ -44,4 +44,24 @@ class BookingsController < ApplicationController
       redirect_back fallback_location: performance_path(@performance)
     end
   end
+
+  def confirm
+    authorize @booking = Booking.find(params[:booking_id])
+    @booking.status = 2
+    if @booking.valid?
+      @booking.confirmed!
+    else
+      @booking.status = 1
+      @booking.save(validate: false)
+      flash[:warning] = "Booking got canceled cause you are no more available at that time"
+    end
+
+    redirect_to bookings_my_performances_path
+  end
+
+  def reject
+    authorize @booking = Booking.find(params[:booking_id])
+    @booking.canceled!
+    redirect_to bookings_my_performances_path
+  end
 end
