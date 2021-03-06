@@ -1,6 +1,6 @@
 <div class="performance-show-container">
 
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('<%= cl_image_path @performance.photos.first.key, crop: :fill %>')">
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('<%= cl_image_path @performance.photo.key, crop: :fill %>')">
     <div class="title-show text-center">
       <h1><%= @performance.character.name %> by <%= @performance.user.nickname %></h1>
       <p><%= @performance.location.address %></p>

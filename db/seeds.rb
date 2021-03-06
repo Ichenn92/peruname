@@ -419,7 +419,7 @@ photos = [
 ].each_with_index do |attribute, index|
   performance = Performance.create!(attribute)
 
-  performance.photos.attach(io: photos[index][:io], filename: photos[index][:filename], content_type: photos[index][:content_type])
+  performance.photo.attach(io: photos[index][:io], filename: photos[index][:filename], content_type: photos[index][:content_type])
 
   puts "Assisting to a new #{performance.performance_category.name.downcase} performance of #{performance.character.name} interpreted by #{performance.user.nickname} at #{performance.location.name} "
 end

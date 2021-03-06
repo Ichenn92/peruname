@@ -29,14 +29,7 @@ class PerformancesController < ApplicationController
 
   def create
     if current_user.actor?
-      @character = Character.find(performance_params[:character_id].to_i) unless performance_params[:character_id].blank?
-      @character_category = CharacterCategory.find(performance_params[:character_category].to_i) unless performance_params[:character_category].blank?
-      @performance_category = PerformanceCategory.find(performance_params[:performance_category_id].to_i) unless performance_params[:performance_category_id].blank?
-      @description = performance_params[:description] unless performance_params[:description].blank?
-      @location = Location.find_by_name(performance_params[:location].split(" / ").first) unless performance_params[:location].blank?
-      @price_per_hour = performance_params[:price_per_hour] unless performance_params[:price_per_hour].blank?
-      @photo = performance_params[:photo] unless performance_params[:photo].blank?
-
+      set_attributes
       authorize @performance = Performance.new({ description: @description,
                                                  price_per_hour: @price_per_hour,
                                                  character: @character,
@@ -44,9 +37,8 @@ class PerformancesController < ApplicationController
                                                  performance_category: @performance_category,
                                                  location: @location,
                                                  user: current_user })
-      current_user.actor = current_user.performances.count > 0
       if @performance.save
-        @performance.photos.attach(@photo)
+        @performance.photo.attach(@photo)
         redirect_to performance_path(@performance)
       else
         render :new
@@ -61,13 +53,7 @@ class PerformancesController < ApplicationController
   end
 
   def update
-    @character = Character.find(performance_params[:character_id].to_i) unless performance_params[:character_id].blank?
-    @character_category = CharacterCategory.find(performance_params[:character_category].to_i) unless performance_params[:character_category].blank?
-    @performance_category = PerformanceCategory.find(performance_params[:performance_category_id].to_i) unless performance_params[:performance_category_id].blank?
-    @description = performance_params[:description] unless performance_params[:description].blank?
-    @location = Location.find_by_name(performance_params[:location].split(" / ").first) unless performance_params[:location].blank?
-    @price_per_hour = performance_params[:price_per_hour] unless performance_params[:price_per_hour].blank?
-    @photo = performance_params[:photo] unless performance_params[:photo].blank?
+    set_attributes
     authorize @performance = Performance.find(params[:id])
     @performance.update(description: @description) unless @description.nil?
     @performance.update(price_per_hour: @price_per_hour) unless @price_per_hour.nil?
@@ -76,8 +62,8 @@ class PerformancesController < ApplicationController
     @performance.update(performance_category: @performance_category) unless @performance_category.nil?
     @performance.update(location: @location) unless @location.nil?
     unless @photo.nil?
-      @performance.photos.purge
-      @performance.photos.attach(@photo)
+      @performance.photo.purge
+      @performance.photo.attach(@photo)
     end
     redirect_to performances_path
   end
@@ -89,6 +75,16 @@ class PerformancesController < ApplicationController
   end
 
   private
+
+  def set_attributes
+    @character = Character.find(performance_params[:character_id].to_i) unless performance_params[:character_id].blank?
+    @character_category = CharacterCategory.find(performance_params[:character_category].to_i) unless performance_params[:character_category].blank?
+    @performance_category = PerformanceCategory.find(performance_params[:performance_category_id].to_i) unless performance_params[:performance_category_id].blank?
+    @description = performance_params[:description] unless performance_params[:description].blank?
+    @location = Location.find_or_create_by(name: params[:location][:name], address: params[:location][:address])
+    @price_per_hour = performance_params[:price_per_hour] unless performance_params[:price_per_hour].blank?
+    @photo = params[:performance][:photo]
+  end
 
   def no_result_found
     flash[:alert] = "No result found with those parameters"
@@ -113,6 +109,6 @@ class PerformancesController < ApplicationController
   end
 
   def performance_params
-    params.require(:performance).permit(:character_id, :character_category, :performance_category_id, :location, :description, :price_per_hour, :photo)
+    params.require(:performance).permit(:character_id, :character_category, :performance_category_id, :description, :price_per_hour, :photo)
   end
 end
