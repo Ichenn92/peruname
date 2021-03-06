@@ -38,7 +38,7 @@ class BookingsController < ApplicationController
 
     if @booking.save
       flash[:success] = "This slot has been registered for you!"
-      redirect_to "/" #, notice: 'Review was successfully created.'
+      redirect_to bookings_my_bookings_path
     else
       flash[:alert] = @booking.errors.full_messages
       redirect_back fallback_location: performance_path(@performance)
