@@ -38,7 +38,7 @@ class Booking < ApplicationRecord
   end
 
   def actor_is_free
-    actor_events = Booking.where("actor_id = ? AND date = ? AND status != ?", actor.id, date, 1)
+    actor_events = Booking.where("actor_id = ? AND date = ? AND status = ?", actor.id, date, 2)
     asked_shift_time = Tod::Shift.new(Tod::TimeOfDay(start_time), Tod::TimeOfDay(end_time), true)
     actor_is_available = actor_events.none? do |event|
       event_shift_time = Tod::Shift.new(Tod::TimeOfDay(event.start_time), Tod::TimeOfDay(event.end_time), true)

@@ -254,7 +254,7 @@ until Booking.count > 30
     end_time: Tod::TimeOfDay.new(rand(13..17)),
     client_id: rand(1..5),
     performance: Performance.find(rand(1..10)),
-    status: rand(0),
+    status: 0,
   )
   booking.actor_id = booking.performance.user.id
   booking.save

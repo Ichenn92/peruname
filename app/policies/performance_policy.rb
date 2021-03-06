@@ -13,6 +13,10 @@ class PerformancePolicy < ApplicationPolicy
     true
   end
 
+  def show?
+    true
+  end
+
   def my_bookings?
     true
   end
@@ -21,4 +25,3 @@ class PerformancePolicy < ApplicationPolicy
     true
   end
 end
-

@@ -19,7 +19,7 @@
       <p>Date: <%= booking.date.strftime("%a, %d %B %Y") %></p>
       <p>
         From: <%= booking.start_time.strftime("%I:%M %p") %>
-        to: <%= booking.start_time.strftime("%I:%M %p") %>
+        to: <%= booking.end_time.strftime("%I:%M %p") %>
       </p>
       <h2 class="card-trip-pricing mt-1">Total cost: <%= booking.price %> CHF</h2>
     </div>

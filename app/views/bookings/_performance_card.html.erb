@@ -7,7 +7,7 @@
         <button class="btn btn-danger btn-lg position-absolute m-4" id="btn-reject" style="top:75px;left:0;">Reject</button>
       <% end %>
       <%= link_to booking_confirm_path(booking), method: "post" do %>
-        <button class="btn btn-success btn-lg position-absolute m-4" id="btn-confirm" style="top:75px;right:0;">Reject</button>
+        <button class="btn btn-success btn-lg position-absolute m-4" id="btn-confirm" style="top:75px;right:0;">Accept</button>
       <% end %>
     </div>
   <% end %>
@@ -32,7 +32,7 @@
       <p>Date: <%= booking.date.strftime("%a, %d %B %Y") %></p>
       <p>
         From: <%= booking.start_time.strftime("%I:%M %p") %>
-        to: <%= booking.start_time.strftime("%I:%M %p") %>
+        to: <%= booking.end_time.strftime("%I:%M %p") %>
       </p>
       <h2 class="card-trip-pricing mt-1">Total cost: <%= booking.price %> CHF</h2>
     </div>
