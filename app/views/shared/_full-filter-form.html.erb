@@ -17,20 +17,20 @@
                                 :id, :name,
                                 { prompt: "Category", include_blank: "All", selected: params[:performance][:character_category] },
                                 { class: "form-control" } %>
-          <%= label_tag "Date" %>
-          <%= text_field_tag :date,
-                             params[:date],
-                             as: :string,
-                             class: "datepicker form-control",
-                             placeholder: "Pick a date" %>
-
-          <h3 class="mt-4">More options</h3>
           <%= label_tag "Style de performance" %>
           <%= collection_select :performance, :performance_category,
                                 PerformanceCategory.all,
                                 :id, :name,
                                 { prompt: "Acting category", selected: params[:performance][:performance_category] },
                                 { class: "form-control" } %>
+
+          <h4 class="mt-4">Pick date and time</h4>
+          <%= label_tag "Date" %>
+          <%= text_field_tag :date,
+                             params[:date],
+                             as: :string,
+                             class: "datepicker form-control",
+                             placeholder: "Pick a date" %>
           <%= label_tag "Start time" %>
           <%= time_select :performance,
                           :availability_start_time,

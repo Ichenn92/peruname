@@ -3,9 +3,9 @@
 
     <div class="col-xs-12 col-sm-5 p-0 images-presentation">
       <div class="h-100 p-3 image-container">
-        <% if performance.photos.attached? %>
+        <% if performance.photo.attached? %>
           <%# raise %>
-          <%= cl_image_tag performance.photos.first.key, height: 300, width: 400, crop: :fill %>
+          <%= cl_image_tag performance.photo.key, height: 300, width: 400, crop: :fill %>
         <% else %>
           <img src=<%= "https://source.unsplash.com/400x300/?#{performance.character.name}" %> />
         <% end %>

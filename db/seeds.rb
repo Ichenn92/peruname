@@ -242,7 +242,7 @@ photos = [
 [performance_1, performance_2, performance_3, performance_4, performance_5, performance_6, performance_7, performance_8, performance_9, performance_10].each_with_index do |attribute, index|
   performance = Performance.create!(attribute)
 
-  performance.photos.attach(io: photos[index][:io], filename: photos[index][:filename], content_type: photos[index][:content_type])
+  performance.photo.attach(io: photos[index][:io], filename: photos[index][:filename], content_type: photos[index][:content_type])
 
   puts "Assisting to a new #{performance.performance_category.name.downcase} performance of #{performance.character.name} interpreted by #{performance.user.nickname} at #{performance.location.name} "
 end
