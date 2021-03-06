@@ -25,7 +25,7 @@
       <i class="fas fa-times-circle text-danger text-big" style="top: 10px; right: 10px;"></i>
     <% end %>
   </div>
-  <%= cl_image_tag booking.performance.photos.first.key %>
+  <%= cl_image_tag booking.performance.photo.key %>
   <div class="card-trip-infos">
     <div class="card-trip-description">
       <p>Address: <%= booking.performance.location.address %></p>

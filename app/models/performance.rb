@@ -6,12 +6,15 @@ class Performance < ApplicationRecord
   belongs_to :location
 
   has_one :character_category, through: :character
-  has_many_attached :photos
   belongs_to :performance_category
 
+  has_one_attached :photo
   has_many :bookings, dependent: :delete_all
 
+  accepts_nested_attributes_for :location
+
   validates :user, presence: true
+  validates :photo, presence: true
   validates :character, presence: true
   validates :character_category, presence: true
   validates :location, presence: true
