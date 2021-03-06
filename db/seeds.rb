@@ -416,14 +416,14 @@ photos = [
   puts "Assisting to a new #{performance.performance_category.name.downcase} performance of #{performance.character.name} interpreted by #{performance.user.nickname} at #{performance.location.name} "
 end
 
-until Booking.count > 30
+until Booking.count > 35
   booking = Booking.new(
     date: Date.new(2021, rand(1..12), rand(1..28)),
     start_time: Tod::TimeOfDay.new(rand(8..12)),
     end_time: Tod::TimeOfDay.new(rand(13..17)),
     client_id: rand(1..5),
     performance: Performance.find(rand(1..15)),
-    status: 0,
+    status: rand(0..2),
   )
   booking.actor_id = booking.performance.user.id
   booking.save
