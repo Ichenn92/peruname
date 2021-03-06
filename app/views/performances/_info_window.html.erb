@@ -12,7 +12,7 @@
               <i class="fas fa-star text-small"></i>
             <% end %>
         </div>
-        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="avatar-bordered" />
+        <%= cl_image_tag performance.user.photo.key, width: 40, height: 40, crop: :thumb, gravity: :face, class: "avatar-bordered" %>
       </div>
 
       <br>

@@ -5,7 +5,7 @@
     </div>
     <div class="row pt-4 border-top">
       <div class="col-xs-12 col-lg-4 bg-info mt-2">
-        <h2 class="mx-4 mt-4 mb-2 text-center">Waiting your answer</h2>
+        <h2 class="mx-4 mt-4 mb-2 text-center">Awaiting <%= "action".pluralize(@pending_performances.count) %></h2>
         <% if @pending_performances %>
           <% @pending_performances.each do |booking| %>
             <%= render partial: "performance_card", locals: { booking: booking } %>

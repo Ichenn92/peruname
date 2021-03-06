@@ -7,7 +7,7 @@ class UsersController < ApplicationController
       availability_end_time: int_to_tod(params[:actor]["availability_end_time(4i)"]),
     }
     if @user.update(attributes)
-      flash[:success] = "You can now click to #{view_context.link_to("→ADD Performance←", "/performances/new")}"
+      flash[:success] = "#{view_context.link_to("Click here to create a new perforance!", "/performances/new")}"
     else
       flash[:alert] = "Something went wrong!"
     end
