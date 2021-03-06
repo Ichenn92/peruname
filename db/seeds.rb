@@ -83,11 +83,11 @@ miscellaneous = { name: "Miscellaneous" }
 end
 
 puts "Registering a few user..."
-alain = { nickname: "Alibaba", first_name: "Alain", last_name: "Berclaz", email: "alain.berclaz@gmail.com", password: "123456", actor: true, availability_start_time: Tod::TimeOfDay.new(18), availability_end_time: Tod::TimeOfDay.new(19) }
-giselle = { nickname: "Gibella", first_name: "Giselle", last_name: "Schmidt", email: "giselle.schmidt@gmail.com", password: "123456", actor: true, availability_start_time: Tod::TimeOfDay.new(12), availability_end_time: Tod::TimeOfDay.new(16) }
-eytan = { nickname: "Tannenbaum", first_name: "Eytan", last_name: "Bergstein", email: "eytan.bergstein@gmail.com", password: "123456", actor: true, availability_start_time: Tod::TimeOfDay.new(19), availability_end_time: Tod::TimeOfDay.new(23) }
-canelle = { nickname: "Canelloni", first_name: "Caroline", last_name: "Maupas", email: "caroline.maupas@gmail.com", password: "123456", actor: true, availability_start_time: Tod::TimeOfDay.new(19), availability_end_time: Tod::TimeOfDay.new(22) }
-gontrand = { nickname: "El Capo", first_name: "Gaston", last_name: "Capo", email: "gaston.capo@gmail.com", password: "123456", actor: true, availability_start_time: Tod::TimeOfDay.new(17), availability_end_time: Tod::TimeOfDay.new(20) }
+alain = { nickname: "Alibaba", first_name: "Alain", last_name: "Berclaz", email: "alain.berclaz@gmail.com", password: "123456", actor: true, availability_start_time: Tod::TimeOfDay.new(10), availability_end_time: Tod::TimeOfDay.new(19) }
+giselle = { nickname: "Gibella", first_name: "Giselle", last_name: "Schmidt", email: "giselle.schmidt@gmail.com", password: "123456", actor: true, availability_start_time: Tod::TimeOfDay.new(8), availability_end_time: Tod::TimeOfDay.new(16) }
+eytan = { nickname: "Tannenbaum", first_name: "Eytan", last_name: "Bergstein", email: "eytan.bergstein@gmail.com", password: "123456", actor: true, availability_start_time: Tod::TimeOfDay.new(15), availability_end_time: Tod::TimeOfDay.new(23) }
+canelle = { nickname: "Canelloni", first_name: "Caroline", last_name: "Maupas", email: "caroline.maupas@gmail.com", password: "123456", actor: true, availability_start_time: Tod::TimeOfDay.new(11), availability_end_time: Tod::TimeOfDay.new(22) }
+gontrand = { nickname: "El Capo", first_name: "Gaston", last_name: "Capo", email: "gaston.capo@gmail.com", password: "123456", actor: true, availability_start_time: Tod::TimeOfDay.new(9), availability_end_time: Tod::TimeOfDay.new(20) }
 
 photos = [
   {
@@ -247,7 +247,7 @@ photos = [
   puts "Assisting to a new #{performance.performance_category.name.downcase} performance of #{performance.character.name} interpreted by #{performance.user.nickname} at #{performance.location.name} "
 end
 
-30.times do
+until Booking.count > 20
   booking = Booking.new(
     date: Date.new(2021, rand(1..12), rand(1..28)),
     start_time: Tod::TimeOfDay.new(rand(8..12)),
@@ -257,7 +257,7 @@ end
     status: rand(0..2),
   )
   booking.actor_id = booking.performance.user.id
-  booking.save!
+  booking.save
 end
 
 puts "Ready to enjoy the show!"

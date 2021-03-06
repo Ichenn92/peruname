@@ -5,17 +5,20 @@
     </div>
     <div class="row">
       <div class="col-xs-12 col-lg-4">
-        <% @canceled_performances.each do |booking| %>
+        <h2 class="mx-4 my-2">Confirmed</h2>
+        <% @confirmed_performances.each do |booking| %>
           <%= render partial: "performance_card", locals: { booking: booking } %>
         <% end %>
       </div>
       <div class="col-xs-12 col-lg-4">
+        <h2 class="mx-4 my-2">Waiting your answer</h2>
         <% @pending_performances.each do |booking| %>
           <%= render partial: "performance_card", locals: { booking: booking } %>
         <% end %>
       </div>
       <div class="col-xs-12 col-lg-4">
-        <% @confirmed_performances.each do |booking| %>
+        <h2 class="mx-4 my-2">Canceled</h2>
+        <% @canceled_performances.each do |booking| %>
           <%= render partial: "performance_card", locals: { booking: booking } %>
         <% end %>
       </div>

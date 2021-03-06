@@ -12,15 +12,16 @@ class Booking < ApplicationRecord
   validates_presence_of :date, :start_time, :end_time
   validate :booking_date_cannot_be_in_past
   validate :actor_is_free
+  validate :shift_is_in_working_time
 
   default_scope { order(date: :asc) }
-  scope :my_upcoming_pending_events, -> (user) { where("client_id = ? AND date >= ? AND status = ? ", user.id, Date.today, 0) }
-  scope :my_upcoming_canceled_events, -> (user) { where("client_id = ? AND date >= ? AND status = ? ", user.id, Date.today, 1) }
-  scope :my_upcoming_confirmed_events, -> (user) { where("client_id = ? AND date >= ? AND status = ? ", user.id, Date.today, 2) }
+  scope :my_upcoming_pending_events, ->(user) { where("client_id = ? AND date >= ? AND status = ? ", user.id, Date.today, 0) }
+  scope :my_upcoming_canceled_events, ->(user) { where("client_id = ? AND date >= ? AND status = ? ", user.id, Date.today, 1) }
+  scope :my_upcoming_confirmed_events, ->(user) { where("client_id = ? AND date >= ? AND status = ? ", user.id, Date.today, 2) }
 
-  scope :my_upcoming_pending_performances, -> (user) { where("actor_id = ? AND date >= ? AND status = ? ", user.id, Date.today, 0) }
-  scope :my_upcoming_canceled_performances, -> (user) { where("actor_id = ? AND date >= ? AND status = ? ", user.id, Date.today, 1) }
-  scope :my_upcoming_confirmed_performances, -> (user) { where("actor_id = ? AND date >= ? AND status = ? ", user.id, Date.today, 2) }
+  scope :my_upcoming_pending_performances, ->(user) { where("actor_id = ? AND date >= ? AND status = ? ", user.id, Date.today, 0) }
+  scope :my_upcoming_canceled_performances, ->(user) { where("actor_id = ? AND date >= ? AND status = ? ", user.id, Date.today, 1) }
+  scope :my_upcoming_confirmed_performances, ->(user) { where("actor_id = ? AND date >= ? AND status = ? ", user.id, Date.today, 2) }
 
   private
 
@@ -28,6 +29,12 @@ class Booking < ApplicationRecord
     if date.present? && date < Date.today
       errors.add(:date, "can't be in the past")
     end
+  end
+
+  def shift_is_in_working_time
+    work_shift_time = Tod::Shift.new(Tod::TimeOfDay(actor.availability_start_time), Tod::TimeOfDay(actor.availability_end_time))
+    asked_shift_time = Tod::Shift.new(Tod::TimeOfDay(start_time), Tod::TimeOfDay(end_time))
+    errors.add(:date, "This actor doesn't work in that shift") unless work_shift_time.contains?(asked_shift_time)
   end
 
   def actor_is_free

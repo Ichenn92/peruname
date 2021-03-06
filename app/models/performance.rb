@@ -17,8 +17,6 @@ class Performance < ApplicationRecord
   validates :location, presence: true
   validates :price_per_hour, presence: true
 
-
-
   def self.search_near_performances_with_filter(params)
     performances = Performance.joins(:location).near(params[:address], 5)
 
@@ -31,8 +29,8 @@ class Performance < ApplicationRecord
     end
 
     if params[:performance]["availability_start_time(4i)"].present? && params[:performance]["availability_end_time(4i)"].present?
-      start_time = Tod::TimeOfDay::new(params[:performance]["availability_start_time(4i)"])
-      end_time = Tod::TimeOfDay::new(params[:performance]["availability_end_time(4i)"])
+      start_time = Tod::TimeOfDay::new(params[:performance]["availability_start_time(4i)"].to_i)
+      end_time = Tod::TimeOfDay::new(params[:performance]["availability_end_time(4i)"].to_i)
 
       if start_time < end_time
         shift = Tod::Shift.new(start_time, end_time)
@@ -40,6 +38,18 @@ class Performance < ApplicationRecord
           actor = performance.user
           actor_shift = Tod::Shift.new(actor.availability_start_time, actor.availability_end_time)
           actor_shift.contains? shift
+        end
+      end
+
+      if params[:date].present?
+        shift
+        performances = performances.select do |performance|
+          performance.bookings.none? do |booking|
+            if booking.date == params[:date]
+              booking_shift = Tod::Shift.new(booking.start_time, booking.end_time)
+              shift.overlaps?(booking_shift)
+            end
+          end
         end
       end
     end

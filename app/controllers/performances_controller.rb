@@ -8,6 +8,7 @@ class PerformancesController < ApplicationController
 
     return no_result_found if @performances.empty?
 
+    result_found
     set_markers
   end
 
@@ -53,6 +54,10 @@ class PerformancesController < ApplicationController
     flash[:alert] = "No result found with those parameters"
     redirect_back fallback_location: root_path
     # render "pages/home"
+  end
+
+  def result_found
+    flash[:success] = "Matches found!"
   end
 
   def set_markers # the `geocoded` scope filters only flats with coordinates (latitude & longitude)
