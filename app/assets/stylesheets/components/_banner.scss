@@ -2,10 +2,11 @@
   height: calc(100vh - 71px);
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  background-image: linear-gradient(rgba(0,0,0, 0.4), rgba(0,0,0,0.4)), image-url("background-funny.jpeg");
+  background-image: linear-gradient(rgba(0,0,0, 0.4), rgba(0,0,0,0.4)), image-url("actors.png");
   background-size: cover;
+  padding: 96px 4px 40px 4px;
   h1 {
     color: white;
     font-weight: bold;
